@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services - Jamaica Employers' Federation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* ROOT VARIABLES */
+    :root {
+      --black: #000000;
+      --gold: #FED100;
+      --green: #009B3A;
+      --white: #ffffff;
+      --off-white: #f8f7f5;
+      --light-gray: #e5e3e0;
+      --dark-gray: #3a3a3a;
+      --serif: 'EB Garamond', serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    /* GLOBAL STYLES */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--sans);
+      color: var(--black);
+      line-height: 1.6;
+      background-color: var(--white);
+    }
+
+    a {
+      color: var(--green);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--gold);
+    }
+
+    /* UTILITY BAR */
+    .util-bar {
+      background: var(--black);
+      padding: 8px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
+      border-bottom: 1px solid rgba(254,209,0,0.15);
+    }
+    .util-bar a { color: rgba(255,255,255,0.55); text-decoration: none; margin-left: 20px; transition: color 0.15s; }
+    .util-bar a:hover { color: var(--gold); }
+    .util-links { display: flex; }
+
+    @media (max-width: 768px) {
+      .util-bar {
+        flex-direction: column;
+        text-align: center;
+      }
+      .util-links {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* NAVIGATION */
+    nav {
+      background: var(--white);
+      border-bottom: 2px solid var(--gold);
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+    }
+
+    .logo-badge {
+      width: 44px; height: 44px;
+      background: var(--black);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column;
+      gap: 1px;
+    }
+    .logo-badge span:first-child { color: var(--gold); font-family: var(--font-serif); font-size: 15px; font-weight: 600; line-height: 1; }
+    .logo-badge span:last-child  { color: rgba(255,255,255,0.4); font-size: 7px; font-weight: 300; letter-spacing: 0.08em; }
+
+    .logo-text h1 { font-family: var(--serif); font-size: 17px; font-weight: 500; color: var(--black); line-height: 1.2; }
+    .logo-text p  { font-size: 11px; color: var(--gray); font-weight: 300; }
+
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      font-size: 13.5px; font-weight: 400;
+      color: var(--black3);
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 4px;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover { background: var(--gray-lt); color: var(--black); }
+    .nav-links a.active { color: var(--black); font-weight: 500; }
+
+    .nav-cta {
+      background: var(--green) !important;
+      color: var(--white) !important;
+      padding: 9px 20px !important;
+      font-weight: 500 !important;
+      border-radius: 4px;
+      margin-left: 8px;
+      transition: background 0.15s !important;
+    }
+    .nav-cta:hover { background: var(--green-dk) !important; }
+
+    .nav-toggle {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 6px; background: none; border: none;
+    }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--black); border-radius: 2px; transition: transform 0.25s, opacity 0.25s; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-drawer {
+      display: none; position: fixed;
+      top: 72px; left: 0; right: 0;
+      background: var(--white);
+      border-top: 2px solid var(--gold);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      z-index: 99; padding: 8px 0 24px;
+      flex-direction: column;
+      max-height: calc(100vh - 72px); overflow-y: auto;
+    }
+    .mobile-drawer.open { display: flex; }
+    .mobile-drawer a { font-size: 15px; color: var(--black3); text-decoration: none; padding: 13px 24px; border-bottom: 1px solid var(--border); font-weight: 400; }
+    .mobile-drawer a:last-of-type { border-bottom: none; }
+    .mobile-drawer .mob-cta { margin: 16px 24px 0; background: var(--green); color: var(--white) !important; font-weight: 500 !important; border-radius: 4px; border: none !important; text-align: center; padding: 13px 24px !important; }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 15px 20px;
+      }
+
+      .logo-text h1 {
+        font-size: 14px;
+      }
+
+      .logo-text p {
+        font-size: 10px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+    }
+
+    /* PAGE HERO */
+    .hero {
+      background: linear-gradient(135deg, var(--black) 0%, var(--green) 100%);
+      color: var(--white);
+      padding: 100px 40px;
+      text-align: center;
+      margin-top: 0;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: 48px;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.8;
+      opacity: 0.95;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 60px 30px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+    }
+
+    /* SERVICES TAB NAVIGATION */
+    .services-nav {
+      position: static;
+      background-color: var(--white);
+      border-bottom: 2px solid var(--light-gray);
+      padding: 0;
+      z-index: 90;
+      overflow-x: auto;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    }
+
+    .services-nav-container {
+      display: flex;
+      gap: 0;
+      padding: 0 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .services-nav button {
+      padding: 18px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--dark-gray);
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--sans);
+    }
+
+    .services-nav button:hover {
+      color: var(--green);
+      border-bottom-color: var(--gold);
+    }
+
+    .services-nav button.active {
+      color: var(--green);
+      border-bottom-color: var(--gold);
+    }
+
+    @media (max-width: 768px) {
+      .services-nav {
+        top: 180px;
+      }
+
+      .services-nav-container {
+        padding: 0 20px;
+      }
+
+      .services-nav button {
+        padding: 14px 16px;
+        font-size: 12px;
+      }
+    }
+
+    /* TAB CONTAINER */
+    .services-tab-container {
+      background-color: var(--white);
+      min-height: 500px;
+    }
+
+    /* SERVICE SECTIONS (Tab Content) */
+    .service-section {
+      padding: 80px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: none;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .service-section.active {
+      display: flex;
+    }
+
+    .service-section.white {
+      background-color: var(--white);
+    }
+
+    .service-section.off-white {
+      background-color: var(--off-white);
+    }
+
+    .service-icon {
+      width: 100px;
+      height: 100px;
+      background-color: var(--gold);
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 50px;
+      margin-bottom: 25px;
+      color: var(--black);
+      flex-shrink: 0;
+    }
+
+    .service-content h2 {
+      font-family: var(--serif);
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: var(--black);
+      font-weight: 700;
+    }
+
+    .service-content p {
+      font-size: 15px;
+      margin-bottom: 18px;
+      line-height: 1.8;
+      color: var(--dark-gray);
+    }
+
+    .service-content .highlight {
+      background-color: rgba(254, 209, 0, 0.15);
+      padding: 20px;
+      border-left: 4px solid var(--gold);
+      margin: 25px 0;
+      border-radius: 4px;
+    }
+
+    .service-benefits {
+      margin: 30px 0;
+      padding: 0;
+    }
+
+    .service-benefits h4 {
+      font-family: var(--serif);
+      font-size: 16px;
+      margin-bottom: 15px;
+      color: var(--black);
+      font-weight: 600;
+    }
+
+    .service-benefits ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .service-benefits li {
+      font-size: 14px;
+      margin-bottom: 10px;
+      padding-left: 25px;
+      position: relative;
+      color: var(--dark-gray);
+    }
+
+    .service-benefits li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .service-cta {
+      background-color: var(--green);
+      color: var(--white);
+      padding: 14px 32px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+      text-decoration: none;
+      margin-top: 20px;
+      width: fit-content;
+    }
+
+    .service-cta:hover {
+      background-color: var(--black);
+    }
+
+    @media (max-width: 768px) {
+      .service-section {
+        padding: 50px 25px;
+        gap: 30px;
+      }
+
+      .service-content h2 {
+        font-size: 28px;
+      }
+
+      .service-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 40px;
+      }
+    }
+
+    /* TRAINING SECTION */
+    .training-section {
+      background: linear-gradient(135deg, var(--black) 0%, var(--green) 100%);
+      color: var(--white);
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    .training-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .training-content h2 {
+      font-family: var(--serif);
+      font-size: 42px;
+      margin-bottom: 25px;
+      font-weight: 700;
+    }
+
+    .training-stat {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 10px;
+      font-family: var(--serif);
+    }
+
+    .training-stat-label {
+      font-size: 18px;
+      margin-bottom: 35px;
+      opacity: 0.95;
+    }
+
+    .training-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin: 50px 0;
+      text-align: left;
+    }
+
+    .training-feature {
+      background-color: rgba(255, 255, 255, 0.08);
+      padding: 25px;
+      border-radius: 8px;
+      border-left: 4px solid var(--gold);
+    }
+
+    .training-feature h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      font-family: var(--serif);
+    }
+
+    .training-feature p {
+      font-size: 14px;
+      line-height: 1.6;
+      opacity: 0.95;
+    }
+
+    .training-topics {
+      margin-top: 45px;
+      padding-top: 35px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .training-topics h4 {
+      font-size: 18px;
+      margin-bottom: 20px;
+      font-family: var(--serif);
+      font-weight: 600;
+    }
+
+    .training-topics-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .training-topics-list span {
+      background-color: var(--gold);
+      color: var(--black);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .training-section {
+        padding: 50px 25px;
+      }
+
+      .training-content h2 {
+        font-size: 32px;
+      }
+
+      .training-stat {
+        font-size: 36px;
+      }
+
+      .training-features {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
+    /* ── Online Training ── */
+    .jef-online-section {
+      background-color: var(--black);
+      color: var(--white);
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    .jef-online-content {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .jef-online-content h2 {
+      font-family: var(--serif);
+      font-size: 42px;
+      margin-bottom: 15px;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .jef-online-subtitle {
+      font-size: 18px;
+      margin-bottom: 45px;
+      opacity: 0.95;
+      line-height: 1.8;
+    }
+
+    .jef-online-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 45px;
+    }
+
+    .jef-online-card {
+      background: linear-gradient(135deg, rgba(254, 209, 0, 0.1) 0%, rgba(0, 155, 58, 0.1) 100%);
+      padding: 35px;
+      border-radius: 8px;
+      border: 1px solid rgba(254, 209, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .jef-online-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--gold);
+      background: linear-gradient(135deg, rgba(254, 209, 0, 0.15) 0%, rgba(0, 155, 58, 0.15) 100%);
+    }
+
+    .jef-online-card-icon {
+      font-size: 36px;
+      margin-bottom: 15px;
+    }
+
+    .jef-online-card h4 {
+      font-family: var(--serif);
+      font-size: 18px;
+      margin-bottom: 12px;
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    .jef-online-card p {
+      font-size: 14px;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    .jef-online-note {
+      background-color: rgba(254, 209, 0, 0.08);
+      border-left: 4px solid var(--gold);
+      padding: 25px;
+      border-radius: 4px;
+      text-align: left;
+      margin-top: 40px;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .jef-online-cta {
+      background-color: var(--gold);
+      color: var(--black);
+      padding: 14px 40px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+      text-decoration: none;
+      margin-top: 25px;
+    }
+
+    .jef-online-cta:hover {
+      background-color: var(--green);
+      color: var(--white);
+    }
+
+    @media (max-width: 768px) {
+      .jef-online-section {
+        padding: 50px 25px;
+      }
+
+      .jef-online-content h2 {
+        font-size: 32px;
+      }
+
+      .jef-online-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .jef-online-note {
+        text-align: center;
+      }
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--black);
+      color: var(--white);
+      padding: 60px 40px 20px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1300px;
+      margin: 0 auto 40px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 40px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 15px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .footer-logo-badge {
+      width: 45px;
+      height: 45px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--green) 100%);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--black);
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .footer-logo-text {
+      color: var(--gold);
+    }
+
+    .footer-logo-img {
+      height: 64px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .footer-about {
+      font-size: 13px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+
+    .footer-contact {
+      font-size: 13px;
+      line-height: 1.7;
+      opacity: 0.85;
+    }
+
+    .footer-col h5 {
+      font-family: var(--serif);
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 18px;
+      color: var(--gold);
+    }
+
+    .footer-col a {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 12px;
+      color: var(--white);
+      opacity: 0.85;
+      transition: all 0.3s ease;
+    }
+
+    .footer-col a:hover {
+      color: var(--gold);
+      opacity: 1;
+    }
+
+    .footer-bottom {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      font-size: 12px;
+      opacity: 0.75;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-bottom a {
+      color: var(--white);
+      opacity: 0.75;
+    }
+
+    .footer-bottom a:hover {
+      opacity: 1;
+      color: var(--gold);
+    }
+
+    @media (max-width: 768px) {
+      footer {
+        padding: 40px 25px 20px;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  
+  /* ── REAL LOGO ── */
+  .logo-img {
+    height: 52px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  </style>
+</head>
+<body>
+
+  <!-- UTILITY BAR -->
+  <div class="util-bar">
+    <span>2A Ruthven Road, Kingston 10 &nbsp;&middot;&nbsp; (876) 926-6762</span>
+    <div class="util-links">
+      <a href="membership.html">Member Portal</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="index.html" class="logo">
+      <img src="Images/Jef Logo.jpg" alt="Jamaica Employers&#39; Federation" class="logo-img">
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About JEF</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="membership.html">Membership</a>
+      <a href="staff.html">Our Staff</a>
+      <a href="news.html">News &amp; Events</a>
+      <a href="resources.html">Resources</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <a href="index.html">Home</a>
+    <a href="about.html">About JEF</a>
+    <a href="services.html">Services</a>
+    <a href="membership.html">Membership</a>
+    <a href="staff.html">Our Staff</a>
+    <a href="news.html">News &amp; Events</a>
+    <a href="resources.html">Resources</a>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <h1>Services Built for Jamaican Employers</h1>
+    <p>Comprehensive expertise and dedicated support across human resources, occupational safety, events, business development, industrial relations, and research—helping employers thrive in Jamaica's dynamic labour market.</p>
+  </section>
+
+  <!-- SERVICES TAB NAVIGATION -->
+  <div class="services-nav">
+    <div class="services-nav-container">
+      <button class="service-tab-btn active" data-tab="hr">Human Resources</button>
+      <button class="service-tab-btn" data-tab="oshe">Occupational Safety</button>
+      <button class="service-tab-btn" data-tab="events">Event Planning</button>
+      <button class="service-tab-btn" data-tab="business">Business Development</button>
+      <button class="service-tab-btn" data-tab="ir">Industrial Relations</button>
+      <button class="service-tab-btn" data-tab="research">Research</button>
+    </div>
+  </div>
+
+  <!-- SERVICE TAB CONTAINER -->
+  <div class="services-tab-container">
+    <!-- SERVICE 1: HUMAN RESOURCES -->
+    <section id="hr" class="service-section white active">
+      <div class="service-icon">👥</div>
+      <div class="service-content">
+        <h2>Human Resource &amp; Workplace Solutions</h2>
+        <p>Our IR consultancy, HR policy development, contract review, dispute mediation, and workforce best-practice support is tailored to Jamaican labour law, helping you navigate complex employment relationships with confidence.</p>
+        <p>We advise on disciplinary procedures, termination processes, redundancy, grievance handling, and staff relations. Our team provides customised HR policy development aligned to the Labour Relations and Industrial Disputes Act, ensuring your workplace practices are both compliant and effective.</p>
+        <div class="highlight">
+          <strong>Reduce legal risk, resolve disputes faster, and improve employee relations.</strong>
+        </div>
+        <div class="service-benefits">
+          <h4>Key Benefits</h4>
+          <ul>
+            <li>Reduced legal and compliance risk</li>
+            <li>Faster dispute resolution</li>
+            <li>Improved employee relations &amp; morale</li>
+            <li>Customised policies aligned to Jamaican labour law</li>
+            <li>Expert guidance on sensitive employment matters</li>
+          </ul>
+        </div>
+        <a href="membership.html" class="service-cta">Learn More</a>
+      </div>
+    </section>
+
+    <!-- SERVICE 2: OCCUPATIONAL SAFETY -->
+    <section id="oshe" class="service-section off-white">
+      <div class="service-icon">🛡️</div>
+      <div class="service-content">
+        <h2>Occupational Safety, Health &amp; Environment</h2>
+        <p>Workplace OSH audits, compliance support, hazard assessments, and safety officer training empower your organisation to meet and exceed Jamaican occupational safety requirements, including the pending OSH Bill.</p>
+        <p>JEF assists employers in developing comprehensive safety management systems, conducting risk assessments, and delivering training for Safety Officers. We also help develop Emergency Response Plans that protect your workforce and demonstrate your commitment to a safe workplace.</p>
+        <div class="highlight">
+          <strong>Stay ahead of regulations, protect your workforce, and reduce incidents.</strong>
+        </div>
+        <div class="service-benefits">
+          <h4>Key Benefits</h4>
+          <ul>
+            <li>Regulatory compliance &amp; legislative awareness</li>
+            <li>Reduced workplace incidents &amp; injuries</li>
+            <li>Comprehensive safety management systems</li>
+            <li>Trained safety officers &amp; emergency protocols</li>
+            <li>Enhanced employee safety culture</li>
+          </ul>
+        </div>
+        <a href="membership.html" class="service-cta">Learn More</a>
+      </div>
+    </section>
+
+    <!-- SERVICE 3: EVENT PLANNING -->
+    <section id="events" class="service-section white">
+      <div class="service-icon">🎯</div>
+      <div class="service-content">
+        <h2>Event Planning &amp; Coordination</h2>
+        <p>End-to-end planning for corporate events, stakeholder engagements, conferences, seminars, and flagship employer events. JEF has a proven track record delivering world-class events that connect employers, government, and labour stakeholders.</p>
+        <p>For over 40 years, we have hosted the Annual Business &amp; Workplace Convention, CEO Breakfast Series (bringing together 80+ senior executives per session), Members Forum, INN Chambers discussions, and National Employers' Month celebrations. Whether you need a small corporate gathering or a large-scale conference, our experienced team delivers excellence.</p>
+        <div class="highlight">
+          <strong>World-class events delivered on time, connecting employers with key stakeholders.</strong>
+        </div>
+        <div class="service-benefits">
+          <h4>Key Benefits</h4>
+          <ul>
+            <li>End-to-end event management &amp; coordination</li>
+            <li>40+ years of proven event delivery</li>
+            <li>Access to employer, government &amp; labour networks</li>
+            <li>Professional planning &amp; execution</li>
+            <li>Memorable experiences for your stakeholders</li>
+          </ul>
+        </div>
+        <a href="membership.html" class="service-cta">Learn More</a>
+      </div>
+    </section>
+
+    <!-- SERVICE 4: BUSINESS DEVELOPMENT -->
+    <section id="business" class="service-section off-white">
+      <div class="service-icon">📈</div>
+      <div class="service-content">
+        <h2>Enterprise &amp; Business Development</h2>
+        <p>Research, policy advocacy, productivity improvement programmes, and access to JEF's regional and international employer networks provide your organisation with tools and connections for competitive growth.</p>
+        <p>We connect members to regional networks (Caribbean Employers' Confederation) and global networks (International Organisation of Employers), advocate for labour market reform, and support SMEs in accessing international best practices. Whether you seek to improve operations, expand your reach, or influence labour policy, we provide the intelligence and connections you need.</p>
+        <div class="highlight">
+          <strong>Grow your network, influence policy, and improve competitiveness.</strong>
+        </div>
+        <div class="service-benefits">
+          <h4>Key Benefits</h4>
+          <ul>
+            <li>Access to regional &amp; international networks</li>
+            <li>Advocacy for labour market reform</li>
+            <li>International best-practice insights</li>
+            <li>Productivity improvement support</li>
+            <li>Competitive intelligence &amp; market analysis</li>
+          </ul>
+        </div>
+        <a href="membership.html" class="service-cta">Learn More</a>
+      </div>
+    </section>
+
+    <!-- SERVICE 5: INDUSTRIAL RELATIONS -->
+    <section id="ir" class="service-section white">
+      <div class="service-icon">⚖️</div>
+      <div class="service-content">
+        <h2>Industrial Relations &amp; Policy</h2>
+        <p>Expert IR advisory, representation in collective bargaining, policy development, and employer advocacy at national and regional levels. JEF represents employers on critical tripartite bodies shaping Jamaica's labour landscape.</p>
+        <p>Our team serves on the Labour Advisory Council (tripartite meetings chaired by the Ministry of Labour), Minimum Wage Commission, Industrial Disputes Tribunal (3 panels), National Council for Persons with Disabilities, and participates in ILO international conferences. We translate complex labour policy into actionable guidance for your organisation.</p>
+        <div class="highlight">
+          <strong>Expert guidance on collective agreements, disputes, and policy changes.</strong>
+        </div>
+        <div class="service-benefits">
+          <h4>Key Benefits</h4>
+          <ul>
+            <li>Expert guidance on labour agreements &amp; disputes</li>
+            <li>Representation in collective bargaining</li>
+            <li>Policy advocacy &amp; influence</li>
+            <li>Early warning on legislative changes</li>
+            <li>Tripartite engagement support</li>
+          </ul>
+        </div>
+        <a href="membership.html" class="service-cta">Learn More</a>
+      </div>
+    </section>
+
+    <!-- SERVICE 6: RESEARCH -->
+    <section id="research" class="service-section off-white">
+      <div class="service-icon">📊</div>
+      <div class="service-content">
+        <h2>Research &amp; Development</h2>
+        <p>Annual Salary and Benefits Survey, labour market analysis, and the Summary of Labour Laws publication provide employers with data-driven intelligence for compensation, hiring, and strategic planning decisions.</p>
+        <p>JEF produces the Annual Compensation Survey (the definitive resource for market-rate salary data), maintains the Summary of Labour Laws (available in English and Mandarin for Jamaica's Chinese employer community through the Chinese Benevolent Association), and publishes Volumes of the Decade of Arbitration for training and research reference.</p>
+        <div class="highlight">
+          <strong>Make data-driven decisions on compensation and stay informed on law changes.</strong>
+        </div>
+        <div class="service-benefits">
+          <h4>Key Benefits</h4>
+          <ul>
+            <li>Market-rate salary &amp; benefits data</li>
+            <li>Comprehensive labour law summaries</li>
+            <li>Data-driven compensation planning</li>
+            <li>Research publications &amp; case studies</li>
+            <li>Competitive intelligence &amp; market trends</li>
+          </ul>
+        </div>
+        <a href="membership.html" class="service-cta">Learn More</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- TRAINING SECTION -->
+  <section class="training-section">
+    <div class="training-content">
+      <h2>Professional Development &amp; Training</h2>
+      <div class="training-stat">1,300+</div>
+      <div class="training-stat-label">Professionals Trained in 2024–2025</div>
+
+      <div class="training-features">
+        <div class="training-feature">
+          <h4>Comprehensive Calendar</h4>
+          <p>Annual Training Calendar distributed free to members and interested organisations.</p>
+        </div>
+        <div class="training-feature">
+          <h4>Expert Instructors</h4>
+          <p>Courses delivered by experienced presenters, including the Senior Director of Workplace Solutions.</p>
+        </div>
+        <div class="training-feature">
+          <h4>Flexible Delivery</h4>
+          <p>Online and face-to-face options, with customised on-site training available on request.</p>
+        </div>
+        <div class="training-feature">
+          <h4>Certification</h4>
+          <p>Certificate of Participation upon successful completion of 1, 2, or 3-day courses.</p>
+        </div>
+        <div class="training-feature">
+          <h4>UWI Partnership</h4>
+          <p>Strategic partnership with University of the West Indies Labour Studies Institute—delivered the third Certificate Course in Labour Studies, September–October 2024.</p>
+        </div>
+        <div class="training-feature">
+          <h4>Continuous Improvement</h4>
+          <p>Course evaluations completed at end of each programme to guide future training development.</p>
+        </div>
+      </div>
+
+      <div class="training-topics">
+        <h4>Training Topics Include:</h4>
+        <div class="training-topics-list">
+          <span>HR Management</span>
+          <span>Industrial Relations</span>
+          <span>Occupational Safety &amp; Health</span>
+          <span>Labour Law</span>
+          <span>Leadership Development</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo"><img src="Images/Jef Logo.jpg" alt="Jamaica Employers' Federation" class="footer-logo-img"></div>
+        <p class="footer-about">Established in 1958, JEF is the sole employers' representative to the ILO in Jamaica and the only organisation of its kind in the region, representing 300+ corporate and individual members.</p>
+        <div class="footer-contact">2A Ruthven Road, Kingston 10, Jamaica<br>(876) 926-6762 / 5524 / 6908</div>
+      </div>
+      <div class="footer-col"><h5>Services</h5><a href="#hr">Human Resources</a><a href="#oshe">Occupational Safety</a><a href="#events">Event Planning</a><a href="#business">Business Development</a><a href="#ir">Industrial Relations</a><a href="#research">Research</a></div>
+      <div class="footer-col"><h5>Organisation</h5><a href="about.html">About JEF</a><a href="about.html#history">History</a><a href="about.html#leadership">Executive Council</a><a href="about.html#mission">Vision &amp; Mission</a><a href="membership.html">Membership</a></div>
+      <div class="footer-col"><h5>Resources</h5><a href="resources.html">Research Papers</a><a href="resources.html">Publications</a><a href="news.html">Conventions</a><a href="#contact">Contact</a></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Jamaica Employers' Federation. All rights reserved.</span>
+      <div><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div>
+    </div>
+  </footer>
+
+  <!-- NAVIGATION & TAB SCRIPT -->
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const drawer = document.getElementById('mobileDrawer');
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('open');
+      drawer.classList.toggle('open');
+    });
+    drawer.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        toggle.classList.remove('open');
+        drawer.classList.remove('open');
+      });
+    });
+
+    // Service Tab Switching
+    const tabButtons = document.querySelectorAll('.service-tab-btn');
+    const tabSections = document.querySelectorAll('.service-section');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const tabName = button.getAttribute('data-tab');
+        
+        // Remove active class from all buttons and sections
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabSections.forEach(section => section.classList.remove('active'));
+        
+        // Add active class to clicked button and corresponding section
+        button.classList.add('active');
+        document.getElementById(tabName).classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

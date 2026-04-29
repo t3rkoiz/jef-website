@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About JEF + Leadership | Jamaica Employers' Federation</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ==================== ROOT & VARIABLES ==================== */
+    :root {
+      --black: #000000;
+      --gold: #FED100;
+      --green: #009B3A;
+      --white: #FFFFFF;
+      --off-white: #F8F8F8;
+      --light-gray: #E8E8E8;
+      --text-dark: #1A1A1A;
+      --text-light: #666666;
+      --border-color: #DDDDDD;
+
+      --font-serif: 'EB Garamond', serif;
+      --font-sans: 'DM Sans', sans-serif;
+
+      --spacing-xs: 0.5rem;
+      --spacing-sm: 1rem;
+      --spacing-md: 1.5rem;
+      --spacing-lg: 2rem;
+      --spacing-xl: 3rem;
+      --spacing-2xl: 4rem;
+
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.12);
+      --shadow-lg: 0 12px 32px rgba(0,0,0,0.16);
+    }
+
+    /* ==================== RESET & BASE ==================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--text-dark);
+      line-height: 1.6;
+      background-color: var(--white);
+    }
+
+    a {
+      color: var(--black);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    p {
+      margin-bottom: var(--spacing-md);
+      color: var(--text-light);
+    }
+
+    /* ==================== UTILITY BAR ==================== */
+    .util-bar {
+      background: var(--black);
+      padding: 8px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
+      border-bottom: 1px solid rgba(254,209,0,0.15);
+    }
+    .util-bar a { color: rgba(255,255,255,0.55); text-decoration: none; margin-left: 20px; transition: color 0.15s; }
+    .util-bar a:hover { color: var(--gold); }
+    .util-links { display: flex; }
+
+    /* ==================== NAVBAR ==================== */
+    nav {
+      background: var(--white);
+      border-bottom: 2px solid var(--gold);
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    }
+    .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .logo-badge {
+      width: 44px; height: 44px;
+      background: var(--black);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column;
+      gap: 1px;
+    }
+    nav .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      margin-right: auto;
+    }
+    .logo-badge span:first-child { color: var(--gold); font-family: var(--font-serif); font-size: 15px; font-weight: 600; line-height: 1; }
+    .logo-badge span:last-child  { color: rgba(255,255,255,0.4); font-size: 7px; font-weight: 300; letter-spacing: 0.08em; }
+    .logo-text h1 { font-family: var(--font-serif); font-size: 17px; font-weight: 500; color: var(--black); line-height: 1.2; }
+    .logo-text p  { font-size: 11px; color: var(--text-light); font-weight: 300; }
+
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      font-size: 13.5px; font-weight: 400;
+      color: var(--text-dark);
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 4px;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover { background: var(--light-gray); color: var(--black); }
+    .nav-links a.active { color: var(--black); font-weight: 500; }
+    .nav-cta {
+      background: var(--green) !important;
+      color: var(--white) !important;
+      padding: 9px 20px !important;
+      font-weight: 500 !important;
+      border-radius: 4px;
+      margin-left: 8px;
+      transition: background 0.15s !important;
+    }
+    .nav-cta:hover { background: var(--green) !important; }
+
+    /* ── HAMBURGER ── */
+    .nav-toggle {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 6px; background: none; border: none;
+    }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--black); border-radius: 2px; transition: transform 0.25s, opacity 0.25s; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-drawer {
+      display: none; position: fixed;
+      top: 72px; left: 0; right: 0;
+      background: var(--white);
+      border-top: 2px solid var(--gold);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      z-index: 99; padding: 8px 0 24px;
+      flex-direction: column;
+      max-height: calc(100vh - 72px); overflow-y: auto;
+    }
+
+    .mobile-drawer.open {
+      display: flex;
+    }
+
+    .mobile-drawer a {
+      font-size: 15px; color: var(--black3); text-decoration: none; padding: 13px 24px; border-bottom: 1px solid var(--border); font-weight: 400;
+    }
+
+    .mobile-drawer a:last-of-type { border-bottom: none; }
+
+    .mobile-drawer .mob-cta {
+      margin: 16px 24px 0; background: var(--green); color: var(--white) !important; font-weight: 500 !important; border-radius: 4px; border: none !important; text-align: center; padding: 13px 24px !important;
+    }
+
+    /* ── RESPONSIVE NAV ── */
+    @media (max-width: 900px) {
+      .util-bar { padding: 8px 20px; }
+      .util-bar > span { display: none; }
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+    }
+
+    @media (max-width: 560px) {
+      .util-bar { display: none; }
+      nav { height: 60px; padding: 0 16px; }
+      .mobile-drawer { top: 60px; }
+    }
+
+    /* ==================== PAGE HERO ==================== */
+    .page-hero {
+      background: linear-gradient(135deg, var(--black) 0%, #1a1a1a 100%);
+      color: var(--white);
+      padding: var(--spacing-2xl) var(--spacing-lg);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -100px;
+      width: 400px;
+      height: 400px;
+      background-color: var(--gold);
+      opacity: 0.08;
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -50px;
+      left: -100px;
+      width: 300px;
+      height: 300px;
+      background-color: var(--green);
+      opacity: 0.06;
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    /* ==================== SECTION STYLES ==================== */
+    .section-sub {
+      font-size: 15px;
+      color: var(--gray);
+      max-width: 560px;
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: 48px;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      margin-bottom: var(--spacing-lg);
+      color: var(--black);
+    }
+
+    /* ==================== HISTORY SECTION ==================== */
+    .history-section {
+      background-color: var(--white);
+    }
+
+    .history-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .history-text {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-light);
+      margin-bottom: var(--spacing-2xl);
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--spacing-lg);
+      margin-top: var(--spacing-xl);
+    }
+
+    .timeline-item {
+      background: linear-gradient(135deg, var(--off-white) 0%, #F3F3F3 100%);
+      padding: var(--spacing-lg);
+      border-radius: var(--radius-md);
+      border-left: 4px solid var(--gold);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .timeline-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .timeline-item-year {
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .timeline-item-text {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* ==================== MISSION/VISION/VALUES SECTION ==================== */
+    .mvv-section {
+      background-color: var(--off-white);
+    }
+
+    .mvv-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-lg);
+    }
+
+    .mvv-card {
+      background-color: var(--white);
+      padding: var(--spacing-lg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-top: 4px solid var(--black);
+    }
+
+    .mvv-card.vision {
+      border-top-color: var(--green);
+    }
+
+    .mvv-card.values {
+      border-top-color: var(--gold);
+    }
+
+    .mvv-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .mvv-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: var(--spacing-md);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .mvv-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.25rem;
+    }
+
+    .mvv-card.mission .mvv-icon {
+      background-color: var(--gold);
+      color: var(--black);
+    }
+
+    .mvv-card.vision .mvv-icon {
+      background-color: var(--green);
+      color: var(--white);
+    }
+
+    .mvv-card.values .mvv-icon {
+      background-color: var(--black);
+      color: var(--gold);
+    }
+
+    .mvv-card p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text-light);
+      margin: 0;
+    }
+
+    .values-list {
+      list-style: none;
+      margin: 0;
+    }
+
+    .values-list li {
+      padding: var(--spacing-sm) 0;
+      padding-left: var(--spacing-lg);
+      position: relative;
+      font-size: 0.95rem;
+      color: var(--text-light);
+    }
+
+    .values-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: bold;
+      font-size: 1.25rem;
+    }
+
+    /* ==================== MESSAGES SECTION ==================== */
+    .messages-section {
+      background-color: var(--white);
+    }
+
+    .messages-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--spacing-xl);
+    }
+
+    .message-card {
+      background: linear-gradient(135deg, var(--off-white) 0%, #F3F3F3 100%);
+      padding: var(--spacing-lg);
+      border-radius: var(--radius-lg);
+      border-left: 4px solid var(--gold);
+    }
+
+    .message-card h4 {
+      font-size: 1.25rem;
+      margin-bottom: var(--spacing-xs);
+      color: var(--black);
+    }
+
+    .message-title {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      font-weight: 500;
+      margin-bottom: var(--spacing-md);
+      font-style: italic;
+    }
+
+    .message-quote {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text-light);
+      border-left: 3px solid var(--gold);
+      padding-left: var(--spacing-md);
+      margin: var(--spacing-md) 0;
+      font-style: italic;
+    }
+
+    /* ==================== AFFILIATIONS SECTION ==================== */
+    .affiliations-section {
+      background-color: var(--black);
+      color: var(--white);
+    }
+
+    .affiliations-section .section-label {
+      color: var(--gold);
+    }
+
+    .affiliations-section .section-title {
+      color: var(--white);
+    }
+
+    .affiliations-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-lg);
+    }
+
+    .affiliation-card {
+      background: rgba(254, 209, 0, 0.1);
+      padding: var(--spacing-lg);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--gold);
+      transition: all 0.3s ease;
+    }
+
+    .affiliation-card:hover {
+      background: rgba(254, 209, 0, 0.2);
+      transform: translateY(-4px);
+    }
+
+    .affiliation-card h4 {
+      font-size: 1.25rem;
+      margin-bottom: var(--spacing-md);
+      color: var(--gold);
+    }
+
+    .affiliation-card p {
+      color: rgba(255, 255, 255, 0.9);
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    /* ==================== CONTACT CTA SECTION ==================== */
+    .contact-cta-section {
+      background: linear-gradient(135deg, var(--black) 0%, #1a1a1a 100%);
+      color: var(--white);
+      text-align: center;
+      padding: var(--spacing-2xl) var(--spacing-lg);
+    }
+
+    .contact-cta-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .contact-cta-section h2 {
+      color: var(--white);
+      margin-bottom: var(--spacing-lg);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+    }
+
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .contact-info-item {
+      background: rgba(254, 209, 0, 0.1);
+      padding: var(--spacing-lg);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--gold);
+    }
+
+    .contact-info-item h4 {
+      color: var(--gold);
+      margin-bottom: var(--spacing-sm);
+      font-size: 1rem;
+    }
+
+    .contact-info-item p {
+      color: rgba(255, 255, 255, 0.9);
+      margin: 0;
+    }
+
+    .contact-cta-button {
+      display: inline-block;
+      background-color: var(--gold);
+      color: var(--black);
+      padding: var(--spacing-sm) var(--spacing-lg);
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      border: 2px solid var(--gold);
+    }
+
+    .contact-cta-button:hover {
+      background-color: transparent;
+      color: var(--gold);
+    }
+
+    /* ==================== FOOTER ==================== */
+    footer {
+      background-color: var(--black);
+      color: var(--white);
+      padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-lg);
+    }
+
+    .footer-top {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-xl);
+      margin-bottom: var(--spacing-2xl);
+      padding-bottom: var(--spacing-2xl);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .footer-logo-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background-color: var(--gold);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-serif);
+      font-weight: 700;
+      color: var(--black);
+      font-size: 1rem;
+    }
+
+    .footer-logo-text {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .footer-logo-img {
+      height: 64px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .footer-about {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .footer-contact {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .footer-col h5 {
+      color: var(--gold);
+      margin-bottom: var(--spacing-md);
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .footer-col a {
+      display: block;
+      padding: var(--spacing-xs) 0;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .footer-col a:hover {
+      color: var(--gold);
+      padding-left: var(--spacing-sm);
+    }
+
+    .footer-bottom {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.6);
+      flex-wrap: wrap;
+      gap: var(--spacing-md);
+    }
+
+    .footer-bottom a {
+      color: rgba(255, 255, 255, 0.6);
+      border-bottom: 1px solid transparent;
+    }
+
+    .footer-bottom a:hover {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
+    @media (max-width: 768px) {
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    /* ==================== RESPONSIVE ==================== */
+    @media (max-width: 768px) {
+      section {
+        padding: var(--spacing-xl) var(--spacing-md);
+      }
+
+      .messages-container {
+        gap: var(--spacing-md);
+      }
+
+      
+
+      
+
+      .contact-info {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ==================== OFFICER PHOTOS ==================== */
+    
+    
+    
+
+    /* ==================== COUNCIL MEMBER PHOTOS ==================== */
+    
+    
+    
+
+    /* ==================== AFFILIATION LOGOS ==================== */
+    .aff-logo {
+      height: 60px;
+      width: auto;
+      max-width: 120px;
+      object-fit: contain;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    /* ==================== MESSAGE PHOTO ==================== */
+    .message-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 3px solid var(--gold);
+      margin-bottom: 12px;
+      display: block;
+    }
+  
+  /* ── REAL LOGO ── */
+  .logo-img {
+    height: 52px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  
+  /* ── GOVERNANCE / COUNCIL ── */
+  .council-section {
+    padding: 80px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .council-officers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 40px 0 48px;
+  }
+  .officer-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px 20px 20px;
+    text-align: center;
+    width: 180px;
+    flex-shrink: 0;
+    transition: box-shadow 0.2s;
+  }
+  .officer-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  .officer-card.officer-president {
+    border-top: 3px solid var(--gold);
+    width: 200px;
+  }
+  .officer-photo-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 14px;
+    border: 3px solid var(--gold);
+    flex-shrink: 0;
+  }
+  .officer-card.officer-president .officer-photo-circle {
+    width: 96px;
+    height: 96px;
+  }
+  .officer-photo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .officer-initials-circle {
+    background: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .officer-role {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 6px;
+  }
+  .officer-name {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 4px;
+  }
+  .officer-company {
+    font-size: 12px;
+    color: var(--black3);
+  }
+  .council-members-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--black3);
+    margin-bottom: 20px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+  .council-members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+  }
+  .council-member {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px 12px 12px;
+    text-align: center;
+    transition: box-shadow 0.2s;
+  }
+  .council-member:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+  .cm-photo-circle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 10px;
+    border: 2px solid var(--gold);
+  }
+  .cm-photo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .cm-initials-circle {
+    background: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    font-family: var(--font-serif);
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .cm-name {
+    display: block;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--black);
+    margin-bottom: 2px;
+  }
+  .cm-company {
+    display: block;
+    font-size: 11px;
+    color: var(--black3);
+  }
+
+  </style>
+</head>
+<body>
+  <!-- UTILITY BAR -->
+  <div class="util-bar">
+    <span>2A Ruthven Road, Kingston 10 &nbsp;&middot;&nbsp; (876) 926-6762</span>
+    <div class="util-links">
+      <a href="membership.html">Member Portal</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="index.html" class="logo">
+      <img src="Images/Jef Logo.jpg" alt="Jamaica Employers&#39; Federation" class="logo-img">
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About JEF</a>
+      <a href="services.html">Services</a>
+      <a href="membership.html">Membership</a>
+      <a href="staff.html">Our Staff</a>
+      <a href="news.html">News &amp; Events</a>
+      <a href="resources.html">Resources</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <a href="index.html">Home</a>
+    <a href="about.html">About JEF</a>
+    <a href="services.html">Services</a>
+    <a href="membership.html">Membership</a>
+    <a href="staff.html">Our Staff</a>
+    <a href="news.html">News &amp; Events</a>
+    <a href="resources.html">Resources</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <h1>About the Jamaica Employers' Federation</h1>
+      <p class="hero-subtitle">Established 1958 · Kingston, Jamaica</p>
+    </div>
+  </section>
+
+  <!-- HISTORY SECTION -->
+  <section class="history-section" id="history">
+    <div class="history-content">
+      <div class="section-label"></div>
+      <h2 class="section-title">Our History</h2>
+
+      <p class="history-text">
+        The Jamaica Employers' Federation (JEF) was established in April 1958 and registered as a Trade Union to represent employers. Over more than six decades, JEF has transformed from a nascent organization into the voice of Jamaica's employers. The Federation's mission has always been to lead the development of an enabling business environment through the effective representation and provision of value-added services that strengthen the ability of employers to optimise competitiveness and workplace harmony.
+      </p>
+
+      <p class="history-text">
+        The Federation has, over the years, assisted in transforming the Jamaican labour market and continues to lobby for labour market reform, especially in the face of globalisation. JEF currently makes its services available to a diverse array of sectors: commerce, community and social services, construction, transport, manufacturing, hospitality and tourism, telecommunications, wholesale and retail, NGOs, finance, mining and quarrying, and more. The membership spans the spectrum of private enterprise activities, from growing startups to the corridors of big business and quasi-government organizations.
+      </p>
+
+      <p class="history-text">
+        The organization's founding leadership included Mr. Douglas Judah, a noted lawyer, as its first President, succeeded by Mr. Hubert Arnold, Managing Director of Hardware and Lumber. This tradition of strong leadership has continued to shape JEF's advocacy and services over the decades.
+      </p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-item-year">1958</div>
+          <div class="timeline-item-text">JEF Established and Registered as Trade Union</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-item-year">1960s–80s</div>
+          <div class="timeline-item-text">Labour Market Transformation & Advocacy</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-item-year">2000s</div>
+          <div class="timeline-item-text">Regional Expansion & Integration</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-item-year">2024–2029</div>
+          <div class="timeline-item-text">Strategic Plan: Digital & Green Transition</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION / VISION / VALUES SECTION -->
+  <section class="mvv-section" id="mission">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div class="section-label">Core Principles</div>
+      <h2 class="section-title">Our Mission, Vision &amp; Values</h2>
+    </div>
+
+    <div class="mvv-container">
+      <div class="mvv-card mission">
+        <h3><span class="mvv-icon">✓</span>Mission</h3>
+        <p>To lead the development of an enabling business environment through the effective representation and provision of value-added services that strengthens the ability of employers to optimise competitiveness and workplace harmony.</p>
+      </div>
+
+      <div class="mvv-card vision">
+        <h3><span class="mvv-icon">◆</span>Vision</h3>
+        <p>To remain the premier employers' organisation in the region, by continuously providing value-added services to our members, thereby assisting them in achieving global competitiveness.</p>
+      </div>
+
+      <div class="mvv-card values">
+        <h3><span class="mvv-icon">★</span>Values</h3>
+        <ul class="values-list">
+          <li><strong>Teamwork:</strong> Highly skilled, multi-disciplinary work team committed to learning and innovation</li>
+          <li><strong>Integrity:</strong> Conducting ourselves with honesty in relations with colleagues and the public</li>
+          <li><strong>Professionalism:</strong> Utmost professionalism in conduct and quality of work</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- MESSAGES SECTION -->
+  <section class="messages-section">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div class="section-label">Leadership Voices</div>
+      <h2 class="section-title">Messages from Leadership</h2>
+    </div>
+
+    <div class="messages-container">
+      <div class="message-card">
+        <img src="Images/WayneChen.jpg" alt="Wayne Chen, President" class="message-photo">
+        <h4>Wayne Chen</h4>
+        <p class="message-title">President, Jamaica Employers' Federation</p>
+        <div class="message-quote">
+          JEF is the longstanding voice of the country's employers and a key tripartite constituent with the Government of Jamaica and Jamaica Confederation of Trade Unions (JCTU). We advocate for priority areas that emphasize business enablement and success, workforce competitiveness, and sustainable labour market practices. Our key focus areas include: improving productivity through upskilling and technology adoption; digital transformation integrating AI and automation; addressing skills gaps through targeted initiatives; labour market reform; and promoting job creation with a just transition to green jobs.
+        </div>
+      </div>
+
+      <div class="message-card">
+        <h4>O'Neil W. Grant, OD, MBA</h4>
+        <p class="message-title">Chief Executive Officer</p>
+        <div class="message-quote">
+          As we formulate plans for the 2024–2029 strategic period, we must assess our position, make necessary adjustments, and set targets to achieve our programs and initiatives. We are reshaping and recommitting to our vision, mission, and core values, keeping our members at the heart of our operations. The Jamaica Employers' Federation will strengthen institutional capacities, increase visibility through PR and communication, and bring back staples such as the face-to-face Convention, CEO Breakfast, and member sensitization fora. The future for JEF is quite interesting, and our strategic plan will lead us in the right direction.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AFFILIATIONS SECTION -->
+  <section class="affiliations-section">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div class="section-label">Global Partnerships</div>
+      <h2 class="section-title">Our Affiliations</h2>
+    </div>
+
+    <div class="affiliations-container">
+      <div class="affiliation-card">
+        <img src="Images/OIE.png" alt="IOE Logo" class="aff-logo">
+        <h4>International Organisation of Employers (IOE)</h4>
+        <p>A founding member of the IOE, JEF participates in global employer advocacy and representation on the world stage.</p>
+      </div>
+
+      <div class="affiliation-card">
+        <img src="Images/CEC.jpg" alt="CEC Logo" class="aff-logo">
+        <h4>Caribbean Employers' Confederation (CEC)</h4>
+        <p>An active member of CEC, which now spans 19 countries in the Caribbean region. JEF's President serves as Immediate Past President of the CEC.</p>
+      </div>
+
+      <div class="affiliation-card">
+        <img src="Images/ILOLogo.png" alt="ILO Logo" class="aff-logo">
+        <h4>International Labour Organization (ILO)</h4>
+        <p>JEF is the sole employer representative to the ILO in Jamaica and the only organisation of its kind in the region representing employers' interests.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEADERSHIP SECTION -->
+    <section class="council-section" id="leadership">
+    <div class="section-label">Governance</div>
+    <div class="section-title">Executive Council 2026–2028</div>
+    <p class="section-sub">JEF is led by an Executive Council elected for the period April 2026 to March 2028, representing a diverse cross-section of Jamaica's business community.</p>
+
+    <div class="council-officers">
+
+      <div class="officer-card officer-president">
+        <div class="officer-photo-circle">
+          <img src="Images/WayneChen.jpg" alt="Wayne Chen">
+        </div>
+        <div class="officer-role">President</div>
+        <div class="officer-name">Wayne Chen</div>
+        <div class="officer-company">Individual Member</div>
+      </div>
+
+      <div class="officer-card">
+        <div class="officer-photo-circle officer-initials-circle">JB</div>
+        <div class="officer-role">1st Vice President</div>
+        <div class="officer-name">Judon Bowden</div>
+        <div class="officer-company">Red Stripe</div>
+      </div>
+
+      <div class="officer-card">
+        <div class="officer-photo-circle">
+          <img src="Images/CordellWilliams.jpg" alt="Cordell Williams-Graham">
+        </div>
+        <div class="officer-role">2nd Vice President</div>
+        <div class="officer-name">Cordell Williams-Graham</div>
+        <div class="officer-company">Young Entrepreneurs&#39; Association</div>
+      </div>
+
+      <div class="officer-card">
+        <div class="officer-photo-circle">
+          <img src="Images/OrvilleHill.jpg" alt="Orville Hill">
+        </div>
+        <div class="officer-role">Treasurer</div>
+        <div class="officer-name">Orville Hill</div>
+        <div class="officer-company">Campbell&#39;s Office Supplies Ltd.</div>
+      </div>
+
+      <div class="officer-card">
+        <div class="officer-photo-circle officer-initials-circle">CA</div>
+        <div class="officer-role">Secretary</div>
+        <div class="officer-name">Caron Anderson</div>
+        <div class="officer-company">Kingston Freeport Terminal Ltd.</div>
+      </div>
+
+      <div class="officer-card">
+        <div class="officer-photo-circle">
+          <img src="Images/IanForbes.jpg" alt="Ian Forbes">
+        </div>
+        <div class="officer-role">Trustee</div>
+        <div class="officer-name">Ian Forbes</div>
+        <div class="officer-company">Sherwin-Williams (W.I.)</div>
+      </div>
+
+      <div class="officer-card">
+        <div class="officer-photo-circle">
+          <img src="Images/HopelinHines.jpg" alt="Dr. Hopelin Hines">
+        </div>
+        <div class="officer-role">Trustee</div>
+        <div class="officer-name">Dr. Hopelin Hines</div>
+        <div class="officer-company">National Commercial Bank</div>
+      </div>
+
+    </div>
+
+    <div class="council-members-label">Council Members</div>
+    <div class="council-members-grid">
+
+      <div class="council-member">
+        <div class="cm-photo-circle">
+          <img src="Images/CliftonReader.jpg" alt="Clifton Reader">
+        </div>
+        <span class="cm-name">Clifton Reader</span><span class="cm-company">Individual</span>
+      </div>
+
+      <div class="council-member">
+        <div class="cm-photo-circle">
+          <img src="Images/BernitaLocke.jpg" alt="Bernita Locke">
+        </div>
+        <span class="cm-name">Bernita Locke</span><span class="cm-company">Individual</span>
+      </div>
+
+      <div class="council-member">
+        <div class="cm-photo-circle">
+          <img src="Images/MichaelArcher.jpg" alt="Michael Archer">
+        </div>
+        <span class="cm-name">Michael Archer</span><span class="cm-company">Individual</span>
+      </div>
+
+      <div class="council-member">
+        <div class="cm-photo-circle">
+          <img src="Images/SilveraCastro.jpg" alt="Silvera Castro">
+        </div>
+        <span class="cm-name">Silvera Castro</span><span class="cm-company">Individual</span>
+      </div>
+
+      <div class="council-member">
+        <div class="cm-photo-circle">
+          <img src="Images/OmarSweeney.png" alt="Omar Sweeney">
+        </div>
+        <span class="cm-name">Omar Sweeney</span><span class="cm-company">Jamaica Social Investment Fund</span>
+      </div>
+
+      <div class="council-member">
+        <div class="cm-photo-circle">
+          <img src="Images/GregoryReid.jpg" alt="Gregory Reid">
+        </div>
+        <span class="cm-name">Gregory Reid</span><span class="cm-company">Gregory Reid Labour Professional</span>
+      </div>
+
+      <div class="council-member">
+        <div class="cm-photo-circle">
+          <img src="Images/ChristopherBond.jpg" alt="Christopher Bond">
+        </div>
+        <span class="cm-name">Christopher Bond</span><span class="cm-company">GraceKennedy Limited</span>
+      </div>
+
+      <div class="council-member">
+        <div class="cm-photo-circle">
+          <img src="Images/DennisTownsend.jpg" alt="Dennis Townsend">
+        </div>
+        <span class="cm-name">Dennis Townsend</span><span class="cm-company">Individual</span>
+      </div>
+
+      <div class="council-member">
+        <div class="cm-photo-circle">
+          <img src="Images/ChristeneKing.jpg" alt="R. Christene King">
+        </div>
+        <span class="cm-name">R. Christene King</span><span class="cm-company">Individual</span>
+      </div>
+
+      <div class="council-member">
+        <div class="cm-photo-circle">
+          <img src="Images/MarilynMcdonald.jpg" alt="Marilyn McDonald-Watson">
+        </div>
+        <span class="cm-name">Marilyn McDonald-Watson</span><span class="cm-company">Jamaica Public Service</span>
+      </div>
+
+      <div class="council-member">
+        <div class="cm-photo-circle cm-initials-circle">CS</div>
+        <span class="cm-name">Cheraulae Stewart</span><span class="cm-company">Securipro Limited</span>
+      </div>
+
+      <div class="council-member">
+        <div class="cm-photo-circle cm-initials-circle">GM</div>
+        <span class="cm-name">Grace-Ann Miller</span><span class="cm-company">Guardsman Group Ltd.</span>
+      </div>
+
+      <div class="council-member">
+        <div class="cm-photo-circle cm-initials-circle">DK</div>
+        <span class="cm-name">Dr. David Knight</span><span class="cm-company">Jamaica Information Service</span>
+      </div>
+
+      <div class="council-member">
+        <div class="cm-photo-circle cm-initials-circle">KS</div>
+        <span class="cm-name">Kerry-Ann Scott-Bernard</span><span class="cm-company">Stronghold Information Management</span>
+      </div>
+
+      <div class="council-member">
+        <div class="cm-photo-circle cm-initials-circle">DC</div>
+        <span class="cm-name">Desmond Campbell</span><span class="cm-company">Cleared Identity Limited</span>
+      </div>
+
+      <div class="council-member">
+        <div class="cm-photo-circle cm-initials-circle">MI</div>
+        <span class="cm-name">Millicent Isaacs</span><span class="cm-company">Individual</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT CTA SECTION -->
+  <section class="contact-cta-section" id="contact">
+    <div class="contact-cta-content">
+      <h2>Get in Touch with JEF</h2>
+
+      <div class="contact-info">
+        <div class="contact-info-item">
+          <h4>Address</h4>
+          <p>2A Ruthven Road<br>Kingston 10, Jamaica</p>
+        </div>
+
+        <div class="contact-info-item">
+          <h4>Phone</h4>
+          <p>(876) 926-6762<br>(876) 926-5524<br>(876) 926-6908</p>
+        </div>
+
+        <div class="contact-info-item">
+          <h4>Quick Links</h4>
+          <p><a href="membership.html" style="color: var(--gold);">Become a Member</a><br>
+          <a href="services.html#jef-online" style="color: var(--gold);">JEF Online Login</a></p>
+        </div>
+      </div>
+
+      <a href="membership.html" class="contact-cta-button">Explore Membership Benefits</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo"><img src="Images/Jef Logo.jpg" alt="Jamaica Employers' Federation" class="footer-logo-img"></div>
+        <p class="footer-about">Established in 1958, JEF is the sole employers' representative to the ILO in Jamaica and the only organisation of its kind in the region, representing 300+ corporate and individual members.</p>
+        <div class="footer-contact">
+          2A Ruthven Road, Kingston 10, Jamaica<br>
+          (876) 926-6762 / 5524 / 6908
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <a href="services.html">Human Resources</a>
+        <a href="services.html">Health &amp; Safety</a>
+        <a href="services.html">Event Planning</a>
+        <a href="services.html">Business Development</a>
+        <a href="services.html">IR &amp; Policy</a>
+        <a href="services.html">Research</a>
+      </div>
+      <div class="footer-col">
+        <h5>Organisation</h5>
+        <a href="about.html">About JEF</a>
+        <a href="about.html#history">History</a>
+        <a href="about.html#leadership">Executive Council</a>
+        <a href="about.html#mission">Vision &amp; Mission</a>
+        <a href="membership.html">Membership</a>
+      </div>
+      <div class="footer-col">
+        <h5>Resources</h5>
+        <a href="resources.html">Research Papers</a>
+        <a href="resources.html">Publications</a>
+        <a href="news.html">Conventions</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Jamaica Employers' Federation. All rights reserved.</span>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const drawer = document.getElementById('mobileDrawer');
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('open');
+      drawer.classList.toggle('open');
+    });
+    drawer.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        toggle.classList.remove('open');
+        drawer.classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>

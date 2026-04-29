@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Events - Jamaica Employers' Federation</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=EB+Garamond:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+  :root {
+    --black:    #000000;
+    --black2:   #111111;
+    --black3:   #1A1A1A;
+    --gold:     #FED100;
+    --gold-dk:  #D4AE00;
+    --green:    #009B3A;
+    --green-dk: #007A2D;
+    --green-lt: #E8F7EE;
+    --white:    #FFFFFF;
+    --offwhite: #F9F9F9;
+    --gray:     #555555;
+    --gray-lt:  #F2F2F2;
+    --border:   #E0E0E0;
+    --font-serif: 'EB Garamond', Georgia, serif;
+    --font-sans:  'DM Sans', sans-serif;
+  }
+
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #fafafa;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'EB Garamond', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+  /* ── UTILITY BAR ── */
+  .util-bar {
+    background: var(--black);
+    padding: 8px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    border-bottom: 1px solid rgba(254,209,0,0.15);
+  }
+  .util-bar a { color: rgba(255,255,255,0.55); text-decoration: none; margin-left: 20px; transition: color 0.15s; }
+  .util-bar a:hover { color: var(--gold); }
+  .util-links { display: flex; }
+
+  /* ── NAVBAR ── */
+  nav {
+    background: var(--white);
+    border-bottom: 2px solid var(--gold);
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  }
+  .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .logo-img { height: 52px; width: auto; display: block; object-fit: contain; }
+
+  .nav-links { display: flex; align-items: center; gap: 4px; }
+  .nav-links a {
+    font-size: 13.5px; font-weight: 400;
+    color: var(--black3);
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 4px;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+  }
+  .nav-links a:hover { background: var(--gray-lt); color: var(--black); }
+  .nav-links a.active { color: var(--black); font-weight: 500; }
+  .nav-cta {
+    background: var(--green) !important;
+    color: var(--white) !important;
+    padding: 9px 20px !important;
+    font-weight: 500 !important;
+    border-radius: 4px;
+    margin-left: 8px;
+    transition: background 0.15s !important;
+  }
+  .nav-cta:hover { background: var(--green-dk) !important; }
+
+  /* ── HAMBURGER ── */
+  .nav-toggle {
+    display: none; flex-direction: column; gap: 5px;
+    cursor: pointer; padding: 6px; background: none; border: none;
+  }
+  .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--black); border-radius: 2px; transition: transform 0.25s, opacity 0.25s; }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ── MOBILE DRAWER ── */
+  .mobile-drawer {
+    display: none; position: fixed;
+    top: 72px; left: 0; right: 0;
+    background: var(--white);
+    border-top: 2px solid var(--gold);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    z-index: 99; padding: 8px 0 24px;
+    flex-direction: column;
+    max-height: calc(100vh - 72px); overflow-y: auto;
+  }
+  .mobile-drawer.open { display: flex; }
+  .mobile-drawer a { font-size: 15px; color: var(--black3); text-decoration: none; padding: 13px 24px; border-bottom: 1px solid var(--border); font-weight: 400; }
+  .mobile-drawer a:last-of-type { border-bottom: none; }
+  .mobile-drawer .mob-cta { margin: 16px 24px 0; background: var(--green); color: var(--white) !important; font-weight: 500 !important; border-radius: 4px; border: none !important; text-align: center; padding: 13px 24px !important; }
+
+  /* ── NAV RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .util-bar { padding: 8px 20px; }
+    .util-bar > span { display: none; }
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+  }
+  @media (max-width: 560px) {
+    .util-bar { display: none; }
+    nav { height: 60px; padding: 0 16px; }
+    .mobile-drawer { top: 60px; }
+  }
+
+
+        /* ===== HERO BANNER ===== */
+        .hero {
+            background: linear-gradient(135deg, #000 0%, #009B3A 100%);
+            color: #fff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 50px 20px;
+            }
+
+            .hero h2 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+        }
+
+        /* ===== CONVENTION CTA BAND ===== */
+        .convention-band {
+            background-color: #FED100;
+            color: #000;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .convention-band h3 {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .convention-band p {
+            font-size: 18px;
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        .btn-register {
+            background-color: #000;
+            color: #FED100;
+            padding: 14px 40px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .btn-register:hover {
+            background-color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .convention-band {
+                padding: 30px 20px;
+            }
+
+            .convention-band h3 {
+                font-size: 24px;
+            }
+
+            .convention-band p {
+                font-size: 16px;
+            }
+        }
+
+        /* ===== EVENTS GRID ===== */
+        .events-section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .events-section h2 {
+            font-size: 36px;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .section-intro {
+            text-align: center;
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .event-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .event-card.featured {
+            grid-column: span 1;
+            transform: scale(1.05);
+        }
+
+        .event-image {
+            height: 200px;
+            background: linear-gradient(135deg, #009B3A 0%, #000 100%);
+            position: relative;
+        }
+
+        .event-image.image-2 {
+            background: linear-gradient(135deg, #FED100 0%, #009B3A 100%);
+        }
+
+        .event-image.image-3 {
+            background: linear-gradient(135deg, #000 0%, #FED100 100%);
+        }
+
+        .event-image.image-4 {
+            background: linear-gradient(135deg, #009B3A 0%, #FED100 100%);
+        }
+
+        .event-image.image-5 {
+            background: linear-gradient(135deg, #FED100 0%, #000 100%);
+        }
+
+        .event-image.image-6 {
+            background: linear-gradient(135deg, #000 0%, #009B3A 100%);
+        }
+
+        .event-category {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #FED100;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .event-content {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-title {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: #000;
+        }
+
+        .event-date {
+            font-size: 13px;
+            color: #009B3A;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .event-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 16px;
+            flex: 1;
+        }
+
+        .event-link {
+            color: #009B3A;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.3s;
+        }
+
+        .event-link:hover {
+            color: #FED100;
+        }
+
+        @media (max-width: 1024px) {
+            .events-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .event-card.featured {
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .events-section {
+                padding: 40px 20px;
+            }
+
+            .events-section h2 {
+                font-size: 28px;
+            }
+
+            .events-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .event-title {
+                font-size: 18px;
+            }
+        }
+
+        /* ===== CALENDAR SECTION ===== */
+        .calendar-section {
+            padding: 60px 20px;
+            background-color: #f5f5f5;
+        }
+
+        .calendar-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .calendar-section h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .calendar-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .calendar-table thead {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .calendar-table th {
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+            border: none;
+        }
+
+        .calendar-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .calendar-table tbody tr:hover {
+            background-color: #fafafa;
+        }
+
+        .calendar-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .activity-name {
+            font-weight: 600;
+            color: #000;
+        }
+
+        .frequency {
+            color: #009B3A;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .calendar-section {
+                padding: 40px 20px;
+            }
+
+            .calendar-section h2 {
+                font-size: 28px;
+            }
+
+            .calendar-table th,
+            .calendar-table td {
+                padding: 12px;
+                font-size: 13px;
+            }
+        }
+
+        /* ===== DIGEST SECTION ===== */
+        .digest-section {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+            color: #fff;
+        }
+
+        .digest-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .digest-section h2 {
+            font-size: 36px;
+            margin-bottom: 16px;
+            color: #FED100;
+        }
+
+        .digest-intro {
+            font-size: 16px;
+            margin-bottom: 32px;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        .digest-form {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .digest-form input {
+            flex: 1;
+            padding: 14px 16px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .digest-form input::placeholder {
+            color: #999;
+        }
+
+        .btn-subscribe {
+            background-color: #FED100;
+            color: #000;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .btn-subscribe:hover {
+            background-color: #d4a800;
+        }
+
+        .digest-benefits {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 24px;
+            font-size: 13px;
+        }
+
+        .benefit-item {
+            padding: 16px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        .benefit-item strong {
+            display: block;
+            color: #FED100;
+            margin-bottom: 6px;
+        }
+
+        @media (max-width: 768px) {
+            .digest-section {
+                padding: 40px 20px;
+            }
+
+            .digest-section h2 {
+                font-size: 28px;
+            }
+
+            .digest-form {
+                flex-direction: column;
+            }
+
+            .digest-form input,
+            .btn-subscribe {
+                width: 100%;
+            }
+
+            .digest-benefits {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+        }
+
+        /* ===== INTERNATIONAL SECTION ===== */
+        .intl-section {
+            padding: 60px 20px;
+            background-color: #f9f9f9;
+        }
+
+        .intl-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .intl-section h2 {
+            font-size: 36px;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .intl-intro {
+            text-align: center;
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .intl-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .intl-card {
+            background-color: #fff;
+            padding: 32px 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+        }
+
+        .intl-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .intl-badge {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .intl-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 8px;
+        }
+
+        .intl-desc {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 1024px) {
+            .intl-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .intl-section {
+                padding: 40px 20px;
+            }
+
+            .intl-section h2 {
+                font-size: 28px;
+            }
+
+            .intl-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .intl-card {
+                padding: 24px 16px;
+            }
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 40px 20px 20px;
+        }
+
+        .footer-top {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #333;
+        }  .footer-logo { margin-bottom: 16px; }
+  .footer-logo-img {
+    height: 64px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+  }
+  
+
+        
+
+        
+
+        
+
+        .footer-about {
+            font-size: 13px;
+            color: #ccc;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .footer-contact {
+            font-size: 12px;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        .footer-col h5 {
+            font-size: 14px;
+            margin-bottom: 16px;
+            color: #FED100;
+        }
+
+        .footer-col a {
+            display: block;
+            color: #ccc;
+            text-decoration: none;
+            font-size: 12px;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: #FED100;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #999;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-bottom a {
+            color: #999;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-bottom a:hover {
+            color: #FED100;
+        }
+
+        .footer-bottom div {
+            display: flex;
+            gap: 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .footer-top {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            footer {
+                padding: 30px 20px 15px;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                margin-bottom: 20px;
+                padding-bottom: 20px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-bottom div {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        .event-card-img img, .news-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+    
+  /* ── REAL LOGO ── */
+  .logo-img {
+    height: 52px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  </style>
+</head>
+<body>
+  <!-- UTILITY BAR -->
+  <div class="util-bar">
+    <span>2A Ruthven Road, Kingston 10 &nbsp;&middot;&nbsp; (876) 926-6762</span>
+    <div class="util-links">
+      <a href="membership.html">Member Portal</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="index.html" class="logo">
+      <img src="Images/Jef Logo.jpg" alt="Jamaica Employers&#39; Federation" class="logo-img">
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About JEF</a>
+      <a href="services.html">Services</a>
+      <a href="membership.html">Membership</a>
+      <a href="staff.html">Our Staff</a>
+      <a href="news.html" class="active">News &amp; Events</a>
+      <a href="resources.html">Resources</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <a href="index.html">Home</a>
+    <a href="about.html">About JEF</a>
+    <a href="services.html">Services</a>
+    <a href="membership.html">Membership</a>
+    <a href="staff.html">Our Staff</a>
+    <a href="news.html">News &amp; Events</a>
+    <a href="resources.html">Resources</a>
+  </div>
+
+    <!-- HERO BANNER -->
+    <section class="hero">
+        <h2>News &amp; Events</h2>
+        <p>Stay informed and connected with Jamaica's employer community. Discover upcoming events, conventions, and opportunities to engage with industry leaders.</p>
+    </section>
+
+    <!-- CONVENTION 2026 CTA BAND -->
+    <section class="convention-band">
+        <h3>Register for the 40th Annual JEF Convention 2026</h3>
+        <p>Jamaica's largest employer-focused convention</p>
+        <button class="btn-register">Register Now</button>
+    </section>
+
+    <!-- EVENTS GRID -->
+    <section class="events-section">
+        <h2>Featured Events</h2>
+        <p class="section-intro">Explore our annual calendar of industry-leading events designed to unite employers, foster knowledge sharing, and drive business transformation.</p>
+
+        <div class="events-grid">
+            <!-- Convention -->
+            <div class="event-card featured">
+                <div class="event-image">
+                    <img src="Images/ILOconference1.jpg" alt="39th Annual Business &amp; Workplace Convention" style="width:100%;height:100%;object-fit:cover;display:block;">
+                    <span class="event-category">CONVENTION</span>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">39th Annual Business &amp; Workplace Convention</h3>
+                    <div class="event-date">May 16–17, 2024 · Virtual</div>
+                    <p class="event-description">Jamaica's largest convention of its kind in the region. Theme: "Business Transformation: Sharing Strategies for Success." 142 registered attendees from HR, Finance, Manufacturing, Marketing, and Government sectors. Co-hosted with the ILO and IOE.</p>
+                    <a href="#" class="event-link">Learn More →</a>
+                </div>
+            </div>
+
+            <!-- CEO Breakfast -->
+            <div class="event-card">
+                <div class="event-image image-2">
+                    <img src="Images/Courtesycallcover.jpg" alt="CEO Breakfast Series" style="width:100%;height:100%;object-fit:cover;display:block;">
+                    <span class="event-category">NETWORKING</span>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">CEO Breakfast Series</h3>
+                    <div class="event-date">Quarterly · Various Venues</div>
+                    <p class="event-description">An exclusive quarterly avenue for senior managers, owners, and the Diplomatic Corps to meet, network, and share best practices. Over 80 guests attend each session. Next breakfast: December 4, 2024.</p>
+                    <a href="#" class="event-link">Learn More →</a>
+                </div>
+            </div>
+
+            <!-- Employers' Month -->
+            <div class="event-card">
+                <div class="event-image image-3">
+                    <img src="Images/Jef%20awards1.jpg" alt="National Employers' Month" style="width:100%;height:100%;object-fit:cover;display:block;">
+                    <span class="event-category">CELEBRATION</span>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">National Employers' Month</h3>
+                    <div class="event-date">September 2024</div>
+                    <p class="event-description">A month-long celebration highlighting the work and dedication of Jamaica's employers towards national development and employment. Opened with a Church Service at Swallowfield Chapel with month-long activities.</p>
+                    <a href="#" class="event-link">Learn More →</a>
+                </div>
+            </div>
+
+            <!-- Members Forum -->
+            <div class="event-card">
+                <div class="event-image image-4">
+                    <img src="Images/ILO2.jpg" alt="Members Forum" style="width:100%;height:100%;object-fit:cover;display:block;">
+                    <span class="event-category">FORUM</span>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">Members Forum</h3>
+                    <div class="event-date">Periodic · JEF Headquarters</div>
+                    <p class="event-description">A periodic forum providing JEF members direct engagement with leadership. Members discuss happenings, share concerns, and receive updates on organizational initiatives and industry developments.</p>
+                    <a href="#" class="event-link">Learn More →</a>
+                </div>
+            </div>
+
+            <!-- INN Chambers -->
+            <div class="event-card">
+                <div class="event-image image-5">
+                    <img src="Images/ILO3.jpg" alt="INN Chambers (Labour Laws Forum)" style="width:100%;height:100%;object-fit:cover;display:block;">
+                    <span class="event-category">LEGAL FORUM</span>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">INN Chambers (Labour Laws Forum)</h3>
+                    <div class="event-date">Quarterly · JEF Chambers</div>
+                    <p class="event-description">Practical quarterly sessions covering current legal developments affecting employers. October 2024 featured a presentation from MLCA on Constitutional Reform. Expert-led discussions on labour law compliance and updates.</p>
+                    <a href="#" class="event-link">Learn More →</a>
+                </div>
+            </div>
+
+            <!-- International Engagement -->
+            <div class="event-card">
+                <div class="event-image image-6">
+                    <img src="Images/ILOLogo.png" alt="ILO &amp; International Conferences" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block;background:linear-gradient(135deg, #000 0%, #009B3A 100%);">
+                    <span class="event-category">GLOBAL</span>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">ILO &amp; International Conferences</h3>
+                    <div class="event-date">June Annually · Geneva &amp; Regional</div>
+                    <p class="event-description">JEF's active participation in the International Labour Conference and CARICOM meetings. Shaping ILO programmes relevant to Jamaica. Engagement on sexual harassment, OSH, and HIV workplace policies.</p>
+                    <a href="#" class="event-link">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ANNUAL CALENDAR SECTION -->
+    <section class="calendar-section">
+        <div class="calendar-container">
+            <h2>Annual Calendar of Activities</h2>
+            <table class="calendar-table">
+                <thead>
+                    <tr>
+                        <th>Activity</th>
+                        <th>Frequency / Timing</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="activity-name">Executive Meetings</td>
+                        <td class="frequency">Bi-monthly (CEO's Report: State of Labour Economy, Market, Operations)</td>
+                    </tr>
+                    <tr>
+                        <td class="activity-name">Annual General Meeting</td>
+                        <td class="frequency">Within 3 months after Financial Year End (May)</td>
+                    </tr>
+                    <tr>
+                        <td class="activity-name">JEF CEO Breakfast Series</td>
+                        <td class="frequency">Quarterly (Starting September)</td>
+                    </tr>
+                    <tr>
+                        <td class="activity-name">In-Chambers (Labour Laws Forum)</td>
+                        <td class="frequency">Quarterly</td>
+                    </tr>
+                    <tr>
+                        <td class="activity-name">Members Forum</td>
+                        <td class="frequency">Periodic as needed</td>
+                    </tr>
+                    <tr>
+                        <td class="activity-name">Financial Statements &amp; Returns</td>
+                        <td class="frequency">July 31st each year</td>
+                    </tr>
+                    <tr>
+                        <td class="activity-name">Subscription Structure Review</td>
+                        <td class="frequency">Annually (March 31st)</td>
+                    </tr>
+                    <tr>
+                        <td class="activity-name">JEF Convention</td>
+                        <td class="frequency">May of each year</td>
+                    </tr>
+                    <tr>
+                        <td class="activity-name">CARICOM Heads of Government Meetings</td>
+                        <td class="frequency">As scheduled</td>
+                    </tr>
+                    <tr>
+                        <td class="activity-name">International Labour Conference</td>
+                        <td class="frequency">June annually (Geneva)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- DIGEST SECTION -->
+    <section class="digest-section">
+        <div class="digest-container">
+            <h2>Stay Informed</h2>
+            <p class="digest-intro">Subscribe to the Employers' Digest, JEF's official e-newsletter delivered directly to your inbox. Get the latest news, updates, and opportunities from the Jamaica Employers' Federation, International Labour Organization, International Organization of Employers, Caribbean Employers' Confederation, and more.</p>
+
+            <form class="digest-form">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="button" class="btn-subscribe">Subscribe</button>
+            </form>
+
+            <div class="digest-benefits">
+                <div class="benefit-item">
+                    <strong>ILO &amp; IOE News</strong>
+                    <span>Global employer updates and insights</span>
+                </div>
+                <div class="benefit-item">
+                    <strong>Local Updates</strong>
+                    <span>Jamaica's labour and employment news</span>
+                </div>
+                <div class="benefit-item">
+                    <strong>Event Schedules</strong>
+                    <span>Register for upcoming JEF events</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERNATIONAL ENGAGEMENTS SECTION -->
+    <section class="intl-section">
+        <div class="intl-container">
+            <h2>International Representation</h2>
+            <p class="intl-intro">JEF actively participates in global employer forums, shaping policy and standards that benefit Jamaica's business community.</p>
+
+            <div class="intl-grid">
+                <div class="intl-card">
+                    <div class="intl-badge">🌍</div>
+                    <div class="intl-name">International Labour Organization</div>
+                    <div class="intl-desc">Jamaica's sole employers' representative to the ILO, influencing international labour standards and policies.</div>
+                </div>
+                <div class="intl-card">
+                    <div class="intl-badge">🤝</div>
+                    <div class="intl-name">Caribbean Employers' Confederation</div>
+                    <div class="intl-desc">Member of CEC representing 19 countries. Wayne Chen serves as Immediate Past CEC President.</div>
+                </div>
+                <div class="intl-card">
+                    <div class="intl-badge">💼</div>
+                    <div class="intl-name">International Organization of Employers</div>
+                    <div class="intl-desc">Global network of business federations co-hosting conventions and collaborative initiatives with JEF.</div>
+                </div>
+                <div class="intl-card">
+                    <div class="intl-badge">🏛️</div>
+                    <div class="intl-name">CARICOM Engagement</div>
+                    <div class="intl-desc">Active participation in Caribbean Community Heads of Government Meetings and regional policy development.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-top">
+            <div>
+                <div class="footer-logo"><img src="Images/Jef Logo.jpg" alt="Jamaica Employers' Federation" class="footer-logo-img"></div>
+                <p class="footer-about">Established in 1958, JEF is the sole employers' representative to the ILO in Jamaica representing 300+ corporate and individual members.</p>
+                <div class="footer-contact">2A Ruthven Road, Kingston 10, Jamaica<br>(876) 926-6762 / 5524 / 6908</div>
+            </div>
+            <div class="footer-col"><h5>Services</h5><a href="services.html">Human Resources</a><a href="services.html">Health &amp; Safety</a><a href="services.html">Event Planning</a><a href="services.html">Business Development</a><a href="services.html">IR &amp; Policy</a><a href="services.html">Research</a></div>
+            <div class="footer-col"><h5>Organisation</h5><a href="about.html">About JEF</a><a href="about.html#history">History</a><a href="about.html#leadership">Executive Council</a><a href="about.html#mission">Vision &amp; Mission</a><a href="membership.html">Membership</a></div>
+            <div class="footer-col"><h5>Resources</h5><a href="resources.html">Research Papers</a><a href="resources.html">Publications</a><a href="news.html">Conventions</a><a href="#contact">Contact</a></div>
+        </div>
+        <div class="footer-bottom"><span>© 2026 Jamaica Employers' Federation. All rights reserved.</span><div><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div></div>
+    </footer>
+
+    <script>
+        const toggle = document.getElementById('navToggle');
+        const drawer = document.getElementById('mobileDrawer');
+        toggle.addEventListener('click', () => { toggle.classList.toggle('open'); drawer.classList.toggle('open'); });
+        drawer.querySelectorAll('a').forEach(a => { a.addEventListener('click', () => { toggle.classList.remove('open'); drawer.classList.remove('open'); }); });
+    </script>
+</body>
+</html>

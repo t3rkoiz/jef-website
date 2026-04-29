@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Membership | Jamaica Employers' Federation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #000000;
+      --gold: #FED100;
+      --green: #009B3A;
+      --dark-gray: #1a1a1a;
+      --light-gray: #f5f5f5;
+      --medium-gray: #666666;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--black);
+      background: white;
+      line-height: 1.6;
+    }
+
+    /* UTILITY BAR */
+    .util-bar {
+      background: var(--black);
+      padding: 8px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
+      border-bottom: 1px solid rgba(254,209,0,0.15);
+    }
+    .util-bar a { color: rgba(255,255,255,0.55); text-decoration: none; margin-left: 20px; transition: color 0.15s; }
+    .util-bar a:hover { color: var(--gold); }
+    .util-links { display: flex; }
+
+    /* NAVIGATION */
+    nav {
+      background: var(--white) !important;
+      background-color: #FFFFFF !important;
+      border-bottom: 2px solid var(--gold);
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--black);
+    }
+
+    .logo-badge {
+      width: 44px; height: 44px;
+      background: var(--black);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column;
+      gap: 1px;
+    }
+    .logo-badge span:first-child { color: var(--gold); font-family: 'EB Garamond', serif; font-size: 15px; font-weight: 600; line-height: 1; }
+    .logo-badge span:last-child  { color: rgba(255,255,255,0.4); font-size: 7px; font-weight: 300; letter-spacing: 0.08em; }
+
+    .logo-text h1 { font-family: 'EB Garamond', serif; font-size: 17px; font-weight: 500; color: var(--black); line-height: 1.2; }
+    .logo-text p  { font-size: 11px; color: var(--medium-gray); font-weight: 300; }
+
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      font-size: 13.5px; font-weight: 400;
+      color: var(--black);
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 4px;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover { background: var(--light-gray); color: var(--black); }
+    .nav-links a.active { color: var(--black); font-weight: 500; }
+
+    .nav-cta {
+      background: var(--green) !important;
+      color: var(--white) !important;
+      padding: 9px 20px !important;
+      font-weight: 500 !important;
+      border-radius: 4px;
+      margin-left: 8px;
+      transition: background 0.15s !important;
+    }
+    .nav-cta:hover {
+      background: #007a2d !important;
+      color: white !important;
+    }
+
+    .nav-toggle {
+      display: none; flex-direction: column;
+      cursor: pointer; padding: 6px; background: none; border: none;
+      gap: 5px;
+    }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--black); border-radius: 2px; transition: transform 0.25s, opacity 0.25s; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-drawer {
+      display: none; position: fixed;
+      top: 72px; left: 0; right: 0;
+      background: var(--white) !important;
+      background-color: #FFFFFF !important;
+      border-top: 2px solid var(--gold);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      z-index: 99; padding: 8px 0 24px;
+      flex-direction: column;
+      max-height: calc(100vh - 72px); overflow-y: auto;
+    }
+
+    .mobile-drawer.open {
+      display: flex;
+    }
+
+    .mobile-drawer a {
+      font-size: 15px; color: var(--black3); text-decoration: none; padding: 13px 24px; border-bottom: 1px solid var(--border); font-weight: 400;
+    }
+
+    .mobile-drawer a:last-of-type { border-bottom: none; }
+
+    .mob-cta {
+      background: var(--green) !important;
+      color: white !important;
+      padding: 13px 24px !important;
+      border-radius: 4px;
+      text-align: center;
+      font-weight: 500 !important;
+      margin: 16px 24px 0;
+    }
+
+    /* ── RESPONSIVE NAV ── */
+    @media (max-width: 900px) {
+      .util-bar { padding: 8px 20px; }
+      .util-bar > span { display: none; }
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+    }
+
+    @media (max-width: 560px) {
+      .util-bar { display: none; }
+      nav { height: 60px; padding: 0 16px; }
+      .mobile-drawer { top: 60px; }
+    }
+
+    /* MAIN CONTENT */
+    main {
+      background: white;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      background: linear-gradient(135deg, var(--black) 0%, #1a1a1a 100%);
+      color: white;
+      padding: 6rem 2rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-family: 'EB Garamond', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .hero-stat {
+      background: var(--gold);
+      color: var(--black);
+      display: inline-block;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-top: 1.5rem;
+    }
+
+    /* SECTION STYLING */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    section h2 {
+      font-family: 'EB Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      text-align: center;
+      color: var(--black);
+    }
+
+    section h3 {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--black);
+    }
+
+    section p {
+      color: var(--medium-gray);
+      margin-bottom: 1rem;
+    }
+
+    /* BENEFITS GRID */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .benefit-card {
+      background: var(--light-gray);
+      padding: 2rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--green);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .benefit-card h3 {
+      color: var(--green);
+      margin-bottom: 1rem;
+      margin-top: 0;
+    }
+
+    .benefit-card p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* WHO CAN JOIN SECTION */
+    .sectors-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+
+    .sector-pill {
+      background: var(--light-gray);
+      border: 2px solid var(--green);
+      color: var(--green);
+      padding: 0.75rem 1.5rem;
+      border-radius: 20px;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    /* MEMBERSHIP CATEGORIES */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 2rem auto;
+    }
+
+    .category-card {
+      background: white;
+      border: 2px solid var(--gold);
+      padding: 2rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .category-card h4 {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--green);
+      margin-bottom: 1rem;
+    }
+
+    /* NEW MEMBERS SECTION */
+    .new-members-container {
+      max-width: 1000px;
+      margin: 2rem auto 0;
+    }
+
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .member-item {
+      background: var(--light-gray);
+      padding: 1.5rem;
+      border-radius: 6px;
+      text-align: center;
+      border-top: 3px solid var(--gold);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* COMEBACK CAMPAIGN */
+    .comeback-band {
+      background: var(--dark-gray);
+      color: white;
+      padding: 4rem 2rem;
+      text-align: center;
+      margin: 3rem 0;
+    }
+
+    .comeback-band h2 {
+      color: white;
+      font-size: 2rem;
+    }
+
+    .comeback-band p {
+      color: white;
+      max-width: 700px;
+      margin: 1.5rem auto;
+      font-size: 1.1rem;
+    }
+
+    /* MEMBERSHIP PROCESS */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 2rem auto;
+    }
+
+    .process-step {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .step-number {
+      background: var(--green);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0 auto 1rem;
+    }
+
+    .process-step h4 {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.25rem;
+      color: var(--black);
+      margin-bottom: 0.75rem;
+    }
+
+    /* CONTACT CTA SECTION */
+    #contact {
+      background: linear-gradient(135deg, var(--black) 0%, #1a1a1a 100%);
+      color: white;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    #contact h2 {
+      color: white;
+    }
+
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 900px;
+      margin: 2rem auto;
+      text-align: left;
+    }
+
+    .contact-block {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--gold);
+    }
+
+    .contact-block h4 {
+      font-family: 'EB Garamond', serif;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-block p {
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-block a {
+      color: var(--gold);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .contact-block a:hover {
+      color: white;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--green);
+      color: white;
+      padding: 1rem 2.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05rem;
+      transition: background 0.3s;
+      margin-top: 2rem;
+      border: none;
+      cursor: pointer;
+    }
+
+    .cta-button:hover {
+      background: #007a2d;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: white;
+      padding: 3rem 2rem 1rem;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .footer-logo-badge {
+      background: var(--gold);
+      color: var(--black);
+      width: 45px;
+      height: 45px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.75rem;
+    }
+
+    .footer-logo-text {
+      font-size: 0.95rem;
+    }
+
+    .footer-logo-img {
+      height: 64px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .footer-about {
+      font-size: 0.9rem;
+      color: #ccc;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .footer-contact {
+      font-size: 0.85rem;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    .footer-col h5 {
+      color: var(--gold);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .footer-col a {
+      display: block;
+      color: #ccc;
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      transition: color 0.3s;
+    }
+
+    .footer-col a:hover {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: #999;
+    }
+
+    .footer-bottom a {
+      color: #999;
+      text-decoration: none;
+      transition: color 0.3s;
+      margin-left: 1.5rem;
+    }
+
+    .footer-bottom a:hover {
+      color: var(--gold);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .util-bar {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+
+      nav {
+        padding: 0 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero {
+        padding: 4rem 1.5rem;
+      }
+
+      section {
+        padding: 3rem 1.5rem;
+      }
+
+      section h2 {
+        font-size: 1.75rem;
+      }
+
+      .benefits-grid,
+      .categories-grid,
+      .process-steps {
+        grid-template-columns: 1fr;
+      }
+
+      .members-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-bottom a {
+        margin-left: 0;
+        margin: 0 0.75rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+
+      .logo-text h1 {
+        font-size: 1rem;
+      }
+
+      .util-bar {
+        font-size: 0.75rem;
+      }
+
+      .util-links {
+        gap: 1rem;
+      }
+
+      .nav-links a {
+        font-size: 0.85rem;
+      }
+    }
+  
+  /* ── REAL LOGO ── */
+  .logo-img {
+    height: 52px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  </style>
+</head>
+<body>
+  <!-- UTILITY BAR -->
+  <div class="util-bar">
+    <span>2A Ruthven Road, Kingston 10 &nbsp;&middot;&nbsp; (876) 926-6762</span>
+    <div class="util-links">
+      <a href="membership.html">Member Portal</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="index.html" class="logo">
+      <img src="Images/Jef Logo.jpg" alt="Jamaica Employers&#39; Federation" class="logo-img">
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About JEF</a>
+      <a href="services.html">Services</a>
+      <a href="membership.html" class="active">Membership</a>
+      <a href="staff.html">Our Staff</a>
+      <a href="news.html">News &amp; Events</a>
+      <a href="resources.html">Resources</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <a href="index.html">Home</a>
+    <a href="about.html">About JEF</a>
+    <a href="services.html">Services</a>
+    <a href="membership.html">Membership</a>
+    <a href="staff.html">Our Staff</a>
+    <a href="news.html">News &amp; Events</a>
+    <a href="resources.html">Resources</a>
+  </div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <h1>Become a Member of Jamaica's Premier Employer Organisation</h1>
+      <div class="hero-stat">300+ Members Across Jamaica</div>
+    </section>
+
+    <!-- WHY JOIN SECTION -->
+    <section>
+      <h2>Why Join JEF?</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <h3>Advocacy</h3>
+          <p>JEF is the sole Jamaican employer representative to the International Labour Organisation (ILO). We advocate on your behalf in tripartite councils, at the Caribbean Employers' Confederation (19 countries), and at the International Organisation of Employers (IOE).</p>
+        </div>
+        <div class="benefit-card">
+          <h3>HR &amp; IR Support</h3>
+          <p>Access expert guidance on labour law, disciplinary procedures, collective bargaining, and grievance handling. JEF's Senior Director — Head of Workplace Solutions provides direct advisory support to members.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Research</h3>
+          <p>Annual Salary &amp; Benefits Survey, Summary of Labour Laws (English + Mandarin), Decade of Arbitration volumes, and labour market analysis to support your business decisions and strategic planning.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Training</h3>
+          <p>Over 1,300 professionals trained in 2024–2025. Courses in HR, IR, Occupational Safety &amp; Health, and Leadership. Online and face-to-face options. Certificate of Participation upon completion.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Partnerships &amp; Collaborations</h3>
+          <p>Access to JEF's network of regional and international employer organisations, UWI Labour Studies Institute, ILO programmes, and JEF Online digital learning platform.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Economic Benefits</h3>
+          <p>Exclusive member pricing on training courses, surveys, consultancy services, and events. Members benefit from JEF's active lobbying for a favourable business environment.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHO CAN JOIN SECTION -->
+    <section>
+      <h2>Who Can Join?</h2>
+      <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; font-size: 1.05rem;">JEF serves a diverse range of sectors across Jamaica. Whether you're a small business, medium enterprise, large corporation, quasi-government organisation, or independent professional, there's a membership category for you.</p>
+
+      <h3 style="text-align: center; margin-top: 3rem; margin-bottom: 1.5rem;">Sectors We Serve</h3>
+      <div class="sectors-pills">
+        <div class="sector-pill">Commerce</div>
+        <div class="sector-pill">Community &amp; Social Services</div>
+        <div class="sector-pill">Construction</div>
+        <div class="sector-pill">Transport</div>
+        <div class="sector-pill">Manufacturing</div>
+        <div class="sector-pill">Hospitality &amp; Tourism</div>
+        <div class="sector-pill">Students</div>
+        <div class="sector-pill">Telecommunications</div>
+        <div class="sector-pill">Wholesale &amp; Retail</div>
+        <div class="sector-pill">NGOs</div>
+        <div class="sector-pill">Finance</div>
+        <div class="sector-pill">Mining &amp; Quarrying</div>
+        <div class="sector-pill">Individuals</div>
+      </div>
+
+      <h3 style="text-align: center; margin-top: 3rem; margin-bottom: 1.5rem;">Membership Categories</h3>
+      <div class="categories-grid">
+        <div class="category-card">
+          <h4>Corporate Members</h4>
+          <p>Companies and organisations of all sizes seeking comprehensive HR, IR, and business development support.</p>
+        </div>
+        <div class="category-card">
+          <h4>Individual Members</h4>
+          <p>HR practitioners, business owners, and independent professionals looking to expand their network and expertise.</p>
+        </div>
+        <div class="category-card">
+          <h4>Quasi-Government Organisations</h4>
+          <p>Public sector entities and statutory bodies working with JEF to strengthen employer practices.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW MEMBERS SECTION -->
+    <section style="background: var(--light-gray);">
+      <h2>Growing Together: New Members 2024–2025</h2>
+      <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; font-size: 1.05rem;">We're proud to welcome these organisations and individuals who joined JEF between February 2024 and January 2025.</p>
+
+      <div class="new-members-container">
+        <div class="members-grid">
+          <div class="member-item">Clifton Reader</div>
+          <div class="member-item">Jeffrey Meeks Limited</div>
+          <div class="member-item">Geddes Refrigeration Limited</div>
+          <div class="member-item">Jus Foods Limited</div>
+          <div class="member-item">The University Council of Jamaica</div>
+          <div class="member-item">Monique Sewell-Smith</div>
+          <div class="member-item">Caribbean HR Solutions</div>
+          <div class="member-item">New Fortress Energy</div>
+          <div class="member-item">Campbell's Office Supplies Ltd.</div>
+          <div class="member-item">Spectrum Insurance Brokers Ltd.</div>
+          <div class="member-item">DunnCox</div>
+          <div class="member-item">Rose Hall (Development) Limited</div>
+          <div class="member-item">Buying House Cement Ltd.</div>
+          <div class="member-item">The Enterprise By IR Ltd.</div>
+          <div class="member-item">Arc Manufacturing Co. Ltd.</div>
+          <div class="member-item">Software Apps and Product Factory Ltd.</div>
+          <div class="member-item">UC Rusal Alumina Jamaica Ltd.</div>
+          <div class="member-item">Can-Cara Development Limited</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- "COME BACK HOME" CAMPAIGN -->
+    <div class="comeback-band">
+      <h2>"Come Back Home"</h2>
+      <p>JEF boasts 300+ members, and we're reaching out to lapsed members who have left. If you were once a member and have moved away, we're inviting you to come back home. Rediscover the value that JEF brings to your bottom line and operations through advocacy, HR and IR support, research, training, partnerships, and economic benefits.</p>
+      <button class="cta-button">Rejoin JEF Today</button>
+    </div>
+
+    <!-- MEMBERSHIP PROCESS -->
+    <section>
+      <h2>How to Join in 3 Simple Steps</h2>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <h4>Contact Us</h4>
+          <p>Reach out to JEF at our Kingston office or via email. Our membership team will provide information on membership categories and answer your questions.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <h4>Assessment</h4>
+          <p>We'll work with you to determine the membership category that best fits your organisation or professional profile and discuss membership benefits.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <h4>Welcome to JEF</h4>
+          <p>Complete the membership process and enjoy full access to training, research, advisory services, networking events, and all JEF benefits.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEMBERSHIP ACTIVITIES CALENDAR -->
+    <section style="background: var(--light-gray);">
+      <h2>Member Activities &amp; Events</h2>
+      <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; font-size: 1.05rem;">Stay connected with JEF throughout the year. Our calendar of activities provides networking, learning, and advocacy opportunities.</p>
+
+      <div style="max-width: 900px; margin: 0 auto;">
+        <div style="background: white; padding: 2rem; border-radius: 8px; border-left: 4px solid var(--gold);">
+          <h4 style="color: var(--green); margin-bottom: 1.5rem;">Executive Meetings</h4>
+          <p style="margin-bottom: 2rem;"><strong>Frequency:</strong> Bi-monthly</p>
+
+          <h4 style="color: var(--green); margin-bottom: 1.5rem;">Annual General Meeting</h4>
+          <p style="margin-bottom: 2rem;"><strong>Timing:</strong> Within 3 months after end of Financial Year (typically May)</p>
+
+          <h4 style="color: var(--green); margin-bottom: 1.5rem;">JEF CEO Breakfast Series</h4>
+          <p style="margin-bottom: 2rem;"><strong>Frequency:</strong> Quarterly — exclusive networking and knowledge-sharing events for senior leadership</p>
+
+          <h4 style="color: var(--green); margin-bottom: 1.5rem;">In-Chambers (Labour Laws Forum)</h4>
+          <p style="margin-bottom: 2rem;"><strong>Frequency:</strong> Quarterly — deep-dive sessions on labour law updates and compliance</p>
+
+          <h4 style="color: var(--green); margin-bottom: 1.5rem;">Members Forum</h4>
+          <p style="margin-bottom: 2rem;"><strong>Frequency:</strong> Periodic — open forums for discussion on industry issues and member feedback</p>
+
+          <h4 style="color: var(--green); margin-bottom: 1rem;">JEF Annual Convention</h4>
+          <p><strong>Timing:</strong> May each year — our flagship annual gathering of employers, leaders, and stakeholders</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT &amp; CTA SECTION -->
+    <section id="contact">
+      <h2>Ready to Join?</h2>
+      <p style="color: white; text-align: center; max-width: 700px; margin: 0 auto 2rem; font-size: 1.05rem;">Contact JEF today to learn more about membership and how we can support your organisation's success.</p>
+
+      <div class="contact-info">
+        <div class="contact-block">
+          <h4>Head Office</h4>
+          <p>2A Ruthven Road, Kingston 10, Jamaica</p>
+        </div>
+        <div class="contact-block">
+          <h4>Phone</h4>
+          <p>(876) 926-6762</p>
+          <p>(876) 926-5524</p>
+          <p>(876) 926-6908</p>
+        </div>
+        <div class="contact-block">
+          <h4>Email</h4>
+          <p><a href="mailto:info@jef.org.jm">info@jef.org.jm</a></p>
+        </div>
+      </div>
+
+      <p style="color: white; text-align: center; margin-top: 2rem;">Or attend a <strong>Members Forum</strong> or <strong>CEO Breakfast</strong> to meet the JEF team in person.</p>
+
+      <button class="cta-button">Apply for Membership</button>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo"><img src="Images/Jef Logo.jpg" alt="Jamaica Employers' Federation" class="footer-logo-img"></div>
+        <p class="footer-about">Established in 1958, JEF is the sole employers' representative to the ILO in Jamaica representing 300+ corporate and individual members.</p>
+        <div class="footer-contact">2A Ruthven Road, Kingston 10, Jamaica<br>(876) 926-6762 / 5524 / 6908</div>
+      </div>
+      <div class="footer-col"><h5>Services</h5><a href="services.html">Human Resources</a><a href="services.html">Health &amp; Safety</a><a href="services.html">Event Planning</a><a href="services.html">Business Development</a><a href="services.html">IR &amp; Policy</a><a href="services.html">Research</a></div>
+      <div class="footer-col"><h5>Organisation</h5><a href="about.html">About JEF</a><a href="about.html#history">History</a><a href="about.html#leadership">Executive Council</a><a href="about.html#mission">Vision &amp; Mission</a><a href="membership.html">Membership</a></div>
+      <div class="footer-col"><h5>Resources</h5><a href="resources.html">Research Papers</a><a href="resources.html">Publications</a><a href="news.html">Conventions</a><a href="#contact">Contact</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Jamaica Employers' Federation. All rights reserved.</span><div><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div></div>
+  </footer>
+
+  <!-- NAVIGATION SCRIPT -->
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const drawer = document.getElementById('mobileDrawer');
+    toggle.addEventListener('click', () => { toggle.classList.toggle('open'); drawer.classList.toggle('open'); });
+    drawer.querySelectorAll('a').forEach(a => { a.addEventListener('click', () => { toggle.classList.remove('open'); drawer.classList.remove('open'); }); });
+  </script>
+</body>
+</html>
