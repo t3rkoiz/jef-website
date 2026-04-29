@@ -58,7 +58,8 @@
     z-index: 100;
     box-shadow: 0 2px 16px rgba(0,0,0,0.06);
   }
-  .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; flex: 1; min-width: 0; }
+  .logo-text { flex: 1; min-width: 0; display: flex; align-items: center; justify-content: center; }
   .logo-badge {
     width: 44px; height: 44px;
     background: var(--black);
@@ -70,7 +71,7 @@
   .logo-badge span:first-child { color: var(--gold); font-family: var(--font-serif); font-size: 15px; font-weight: 600; line-height: 1; }
   .logo-badge span:last-child  { color: rgba(255,255,255,0.4); font-size: 7px; font-weight: 300; letter-spacing: 0.08em; }
   .logo-text h1 { font-family: var(--font-serif); font-size: 17px; font-weight: 500; color: var(--black); line-height: 1.2; }
-  .logo-text p  { font-size: 11px; color: var(--gray); font-weight: 300; }
+  .logo-text p  { font-family: Helvetica, Arial, sans-serif; font-size: 36px; color: var(--black3); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; margin: 0; }
 
   .nav-links { display: flex; align-items: center; gap: 4px; }
   .nav-links a {
@@ -152,7 +153,7 @@
   .hero-bg-img {
     position: absolute;
     inset: 0;
-    background-image: url('Images/jefhero.webp');
+    background-image: url('Images/droneshot.jpg');
     background-size: cover;
     background-position: center;
     opacity: 0.4;
@@ -390,18 +391,6 @@
   .footer-bottom a { color: rgba(255,255,255,0.3); text-decoration: none; margin-left: 16px; }
   .footer-bottom a:hover { color: var(--gold); }
 
-  /* ── MOCKUP BADGE ── */
-  .mockup-notice {
-    position: fixed; bottom: 16px; right: 16px;
-    background: rgba(0,0,0,0.92); color: white;
-    font-family: var(--font-sans); font-size: 11px;
-    padding: 10px 16px; border-radius: 4px;
-    border-left: 3px solid var(--gold);
-    backdrop-filter: blur(8px); z-index: 999;
-    line-height: 1.5; max-width: 220px;
-  }
-  .mockup-notice strong { color: var(--gold); display: block; margin-bottom: 2px; }
-
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     .util-bar { padding: 8px 20px; }
@@ -474,17 +463,17 @@
 
   /* ── MISSION & VISION ── */
   .mission-section {
-    background: var(--black);
+    background: var(--white);
     padding: 64px 48px;
     border-top: 1px solid rgba(254,209,0,0.1);
   }
   .mission-grid {
     display: grid; grid-template-columns: 1fr 1fr;
-    gap: 2px; border-radius: 6px; overflow: hidden;
+    gap: 24px; border-radius: 6px; overflow: visible;
   }
   .mission-card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(254,209,0,0.1);
+    background: var(--offwhite);
+    border: 1px solid var(--border);
     padding: 44px 40px;
     transition: background 0.2s;
   }
@@ -505,11 +494,11 @@
   .mission-card h3 {
     font-family: var(--font-serif);
     font-size: 22px; font-weight: 500;
-    color: var(--gold); margin-bottom: 14px;
+    color: var(--black); margin-bottom: 14px;
   }
-  .mission-card--green h3 { color: var(--white); }
+  .mission-card--green h3 { color: var(--black); }
   .mission-card p {
-    font-size: 15px; color: rgba(255,255,255,0.6);
+    font-size: 15px; color: var(--black3);
     line-height: 1.75; font-weight: 300;
   }
 
@@ -670,7 +659,10 @@
   <!-- NAVBAR -->
   <nav>
     <a href="index.html" class="logo">
-      <img src="Images/Jef Logo.jpg" alt="Jamaica Employers&#39; Federation" class="logo-img">
+      <img src="Images/JEFLOGO2.png" alt="Jamaica Employers&#39; Federation" class="logo-img">
+      <div class="logo-text">
+        <p>JAMAICA EMPLOYERS FEDERATION</p>
+      </div>
     </a>
     <div class="nav-links">
       <a href="index.html">Home</a>
@@ -710,13 +702,13 @@
       <a href="#" class="btn-ghost">About JEF →</a>
     </div>
   </div>
-  <div class="hero-panel">
+  <!-- <div class="hero-panel">
     <div class="hero-panel-label">JEF at a Glance</div>
     <div class="stat-row"><div class="stat-num">300<span>+</span></div><div class="stat-desc">Corporate &amp; individual members</div></div>
     <div class="stat-row"><div class="stat-num">66<span>+</span></div><div class="stat-desc">Years representing Jamaican employers</div></div>
     <div class="stat-row"><div class="stat-num">1,300<span>+</span></div><div class="stat-desc">Persons trained in 2024–2025</div></div>
     <div class="stat-row"><div class="stat-num">39<span>th</span></div><div class="stat-desc">Annual Business &amp; Workplace Convention</div></div>
-  </div>
+  </div> -->
 </div>
 
 <!-- AFFILIATIONS STRIP -->
@@ -1053,13 +1045,6 @@
     </div>
   </div>
 </footer>
-
-<!-- MOCKUP BADGE -->
-<div class="mockup-notice">
-  <strong>Design Mockup v2.1</strong>
-  JEF Website Revamp · Jamaican Flag Palette<br>
-  For review purposes only
-</div>
 
 <script>
   const toggle = document.getElementById('navToggle');

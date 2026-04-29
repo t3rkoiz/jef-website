@@ -101,7 +101,8 @@
       z-index: 100;
       box-shadow: 0 2px 16px rgba(0,0,0,0.06);
     }
-    .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; flex: 1; min-width: 0; }
+    .logo-text { flex: 1; min-width: 0; display: flex; align-items: center; justify-content: center; }
     .logo-badge {
       width: 44px; height: 44px;
       background: var(--black);
@@ -110,17 +111,10 @@
       flex-direction: column;
       gap: 1px;
     }
-    nav .logo {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      text-decoration: none;
-      margin-right: auto;
-    }
     .logo-badge span:first-child { color: var(--gold); font-family: var(--font-serif); font-size: 15px; font-weight: 600; line-height: 1; }
     .logo-badge span:last-child  { color: rgba(255,255,255,0.4); font-size: 7px; font-weight: 300; letter-spacing: 0.08em; }
     .logo-text h1 { font-family: var(--font-serif); font-size: 17px; font-weight: 500; color: var(--black); line-height: 1.2; }
-    .logo-text p  { font-size: 11px; color: var(--text-light); font-weight: 300; }
+    .logo-text p  { font-family: Helvetica, Arial, sans-serif; font-size: 36px; color: var(--text-dark); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; margin: 0; }
 
     .nav-links { display: flex; align-items: center; gap: 4px; }
     .nav-links a {
@@ -132,7 +126,7 @@
       transition: background 0.15s, color 0.15s;
       white-space: nowrap;
     }
-    .nav-links a:hover { background: var(--light-gray); color: var(--black); }
+    .nav-links a:hover { background: #F2F2F2; color: var(--black); }
     .nav-links a.active { color: var(--black); font-weight: 500; }
     .nav-cta {
       background: var(--green) !important;
@@ -143,7 +137,7 @@
       margin-left: 8px;
       transition: background 0.15s !important;
     }
-    .nav-cta:hover { background: var(--green) !important; }
+    .nav-cta:hover { background: #007A2D !important; }
 
     /* ── HAMBURGER ── */
     .nav-toggle {
@@ -810,65 +804,58 @@
     font-size: 12px;
     color: var(--black3);
   }
-  .council-members-label {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--black3);
-    margin-bottom: 20px;
-    padding-top: 12px;
-    border-top: 1px solid var(--border);
-  }
-  .council-members-grid {
+  /* ── GOVERNANCE GRID ── */
+  .governance-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
   }
-  .council-member {
+  .governance-card {
     background: #fff;
     border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 16px 12px 12px;
-    text-align: center;
+    border-radius: 8px;
+    overflow: hidden;
     transition: box-shadow 0.2s;
   }
-  .council-member:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
-  .cm-photo-circle {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
+  .governance-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+  
+  .governance-image {
+    width: 100%;
+    height: 280px;
+    background: var(--off-white);
+    border-bottom: 1px solid var(--border);
     overflow: hidden;
-    margin: 0 auto 10px;
-    border: 2px solid var(--gold);
   }
-  .cm-photo-circle img {
+  .governance-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top;
+    object-position: center;
   }
-  .cm-initials-circle {
-    background: var(--black);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--gold);
+  .governance-card-content {
+    padding: 16px 14px;
+  }
+  .governance-name {
     font-family: var(--font-serif);
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
-  }
-  .cm-name {
-    display: block;
-    font-weight: 600;
-    font-size: 13px;
     color: var(--black);
-    margin-bottom: 2px;
+    margin-bottom: 4px;
+    line-height: 1.3;
   }
-  .cm-company {
-    display: block;
+  .governance-title {
     font-size: 11px;
-    color: var(--black3);
+    font-weight: 600;
+    color: var(--green);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+  .governance-company {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.4;
   }
 
   </style>
@@ -886,7 +873,10 @@
   <!-- NAVBAR -->
   <nav>
     <a href="index.html" class="logo">
-      <img src="Images/Jef Logo.jpg" alt="Jamaica Employers&#39; Federation" class="logo-img">
+      <img src="Images/JEFLOGO2.png" alt="Jamaica Employers&#39; Federation" class="logo-img">
+      <div class="logo-text">
+        <p>JAMAICA EMPLOYERS FEDERATION</p>
+      </div>
     </a>
     <div class="nav-links">
       <a href="index.html">Home</a>
@@ -998,7 +988,7 @@
 
     <div class="messages-container">
       <div class="message-card">
-        <img src="Images/WayneChen.jpg" alt="Wayne Chen, President" class="message-photo">
+        <img src="Images/Wayne Chen President.jpg" alt="Wayne Chen, President" class="message-photo">
         <h4>Wayne Chen</h4>
         <p class="message-title">President, Jamaica Employers' Federation</p>
         <div class="message-quote">
@@ -1047,175 +1037,261 @@
   <!-- LEADERSHIP SECTION -->
     <section class="council-section" id="leadership">
     <div class="section-label">Governance</div>
-    <div class="section-title">Executive Council 2026–2028</div>
-    <p class="section-sub">JEF is led by an Executive Council elected for the period April 2026 to March 2028, representing a diverse cross-section of Jamaica's business community.</p>
+    <div class="section-title">Executive Council</div>
+    <p class="section-sub">JEF is led by an Executive Council representing a diverse cross-section of Jamaica's business community.</p>
 
-    <div class="council-officers">
-
-      <div class="officer-card officer-president">
-        <div class="officer-photo-circle">
-          <img src="Images/WayneChen.jpg" alt="Wayne Chen">
+    <div class="governance-grid">
+      <!-- 1. Wayne Chen - President -->
+      <div class="governance-card">
+        <div class="governance-image">
+          <img src="Images/Wayne Chen President.jpg" alt="Wayne Chen">
         </div>
-        <div class="officer-role">President</div>
-        <div class="officer-name">Wayne Chen</div>
-        <div class="officer-company">Individual Member</div>
-      </div>
-
-      <div class="officer-card">
-        <div class="officer-photo-circle officer-initials-circle">JB</div>
-        <div class="officer-role">1st Vice President</div>
-        <div class="officer-name">Judon Bowden</div>
-        <div class="officer-company">Red Stripe</div>
-      </div>
-
-      <div class="officer-card">
-        <div class="officer-photo-circle">
-          <img src="Images/CordellWilliams.jpg" alt="Cordell Williams-Graham">
+        <div class="governance-card-content">
+          <div class="governance-name">Wayne Chen</div>
+          <div class="governance-title">President</div>
+          <div class="governance-company">Individual</div>
         </div>
-        <div class="officer-role">2nd Vice President</div>
-        <div class="officer-name">Cordell Williams-Graham</div>
-        <div class="officer-company">Young Entrepreneurs&#39; Association</div>
       </div>
 
-      <div class="officer-card">
-        <div class="officer-photo-circle">
-          <img src="Images/OrvilleHill.jpg" alt="Orville Hill">
+      <!-- 2. Judon Bowden - 1st Vice President -->
+      <div class="governance-card">
+        <div class="governance-image">
+          <img src="Images/Judon Bowen - 1st Vice President.jpg" alt="Judon Bowden">
         </div>
-        <div class="officer-role">Treasurer</div>
-        <div class="officer-name">Orville Hill</div>
-        <div class="officer-company">Campbell&#39;s Office Supplies Ltd.</div>
-      </div>
-
-      <div class="officer-card">
-        <div class="officer-photo-circle officer-initials-circle">CA</div>
-        <div class="officer-role">Secretary</div>
-        <div class="officer-name">Caron Anderson</div>
-        <div class="officer-company">Kingston Freeport Terminal Ltd.</div>
-      </div>
-
-      <div class="officer-card">
-        <div class="officer-photo-circle">
-          <img src="Images/IanForbes.jpg" alt="Ian Forbes">
+        <div class="governance-card-content">
+          <div class="governance-name">Judon Bowden</div>
+          <div class="governance-title">1st Vice President</div>
+          <div class="governance-company">Red Stripe<br>Head of Human Resources</div>
         </div>
-        <div class="officer-role">Trustee</div>
-        <div class="officer-name">Ian Forbes</div>
-        <div class="officer-company">Sherwin-Williams (W.I.)</div>
       </div>
 
-      <div class="officer-card">
-        <div class="officer-photo-circle">
-          <img src="Images/HopelinHines.jpg" alt="Dr. Hopelin Hines">
+      <!-- 3. Cordell Williams-Graham - 2nd Vice President -->
+      <div class="governance-card">
+        <div class="governance-image">
+          <img src="Images/Cordell Williams-Graham 2nd Vice President.jpg" alt="Cordell Williams-Graham">
         </div>
-        <div class="officer-role">Trustee</div>
-        <div class="officer-name">Dr. Hopelin Hines</div>
-        <div class="officer-company">National Commercial Bank</div>
+        <div class="governance-card-content">
+          <div class="governance-name">Cordell Williams-Graham</div>
+          <div class="governance-title">2nd Vice President</div>
+          <div class="governance-company">Young Entrepreneurs' Association<br>President</div>
+        </div>
       </div>
 
-    </div>
+      <!-- 4. Orville A. Hill - Treasurer -->
+      <div class="governance-card">
+        <div class="governance-image">
+          <img src="Images/Orville Hill - Treasurer.jpg" alt="Orville A. Hill">
+        </div>
+        <div class="governance-card-content">
+          <div class="governance-name">Orville A. Hill</div>
+          <div class="governance-title">Treasurer</div>
+          <div class="governance-company">Campbell's Office Supplies Ltd.<br>Director</div>
+        </div>
+      </div>
 
-    <div class="council-members-label">Council Members</div>
-    <div class="council-members-grid">
+      <!-- 5. The Hon. Ian Forbes - Trustee -->
+      <div class="governance-card">
+        <div class="governance-image">
+          <img src="Images/Hon. Ian Forbes - Trustee.jpg" alt="The Hon. Ian Forbes">
+        </div>
+        <div class="governance-card-content">
+          <div class="governance-name">The Hon. Ian Forbes</div>
+          <div class="governance-title">Trustee</div>
+          <div class="governance-company">Sherwin-Williams (W.I.) Ltd.<br>Retired</div>
+        </div>
+      </div>
 
-      <div class="council-member">
-        <div class="cm-photo-circle">
+      <!-- 6. Hopelin Hines (Dr.) - Trustee -->
+      <div class="governance-card">
+        <div class="governance-image">
+          <img src="Images/Dr. Hopelin Hines - Trustee.jpg" alt="Dr. Hopelin Hines">
+        </div>
+        <div class="governance-card-content">
+          <div class="governance-name">Dr. Hopelin Hines</div>
+          <div class="governance-title">Trustee</div>
+          <div class="governance-company">National Commercial Bank<br>VP - Group Human Resources</div>
+        </div>
+      </div>
+
+      <!-- 7. Caron Anderson - Secretary -->
+      <div class="governance-card">
+        <div class="governance-image">
+          <img src="Images/Caron Anderson - Secretary.jpg" alt="Caron Anderson">
+        </div>
+        <div class="governance-card-content">
+          <div class="governance-name">Caron Anderson</div>
+          <div class="governance-title">Secretary</div>
+          <div class="governance-company">Kingston Freeport Terminal Ltd.<br>Chief Human Resources Officer</div>
+        </div>
+      </div>
+
+      <!-- 8. Clifton Reader -->
+      <div class="governance-card">
+        <div class="governance-image">
           <img src="Images/CliftonReader.jpg" alt="Clifton Reader">
         </div>
-        <span class="cm-name">Clifton Reader</span><span class="cm-company">Individual</span>
-      </div>
-
-      <div class="council-member">
-        <div class="cm-photo-circle">
-          <img src="Images/BernitaLocke.jpg" alt="Bernita Locke">
+        <div class="governance-card-content">
+          <div class="governance-name">Clifton Reader</div>
+          <div class="governance-title">Council Member</div>
+          <div class="governance-company">Individual</div>
         </div>
-        <span class="cm-name">Bernita Locke</span><span class="cm-company">Individual</span>
       </div>
 
-      <div class="council-member">
-        <div class="cm-photo-circle">
-          <img src="Images/MichaelArcher.jpg" alt="Michael Archer">
+      <!-- 9. Bernita Locke -->
+      <div class="governance-card">
+        <div class="governance-image">
+          <img src="Images/Bernita Locke.jpg" alt="Bernita Locke">
         </div>
-        <span class="cm-name">Michael Archer</span><span class="cm-company">Individual</span>
+        <div class="governance-card-content">
+          <div class="governance-name">Bernita Locke</div>
+          <div class="governance-title">Council Member</div>
+          <div class="governance-company">Individual</div>
+        </div>
       </div>
 
-      <div class="council-member">
-        <div class="cm-photo-circle">
+      <!-- 10. Michael Archer -->
+      <div class="governance-card">
+        <div class="governance-image">
+          <img src="Images/Michael Archer.jpg" alt="Michael Archer">
+        </div>
+        <div class="governance-card-content">
+          <div class="governance-name">Michael Archer</div>
+          <div class="governance-title">Council Member</div>
+          <div class="governance-company">Individual</div>
+        </div>
+      </div>
+
+      <!-- 11. Silvera Castro -->
+      <div class="governance-card">
+        <div class="governance-image">
           <img src="Images/SilveraCastro.jpg" alt="Silvera Castro">
         </div>
-        <span class="cm-name">Silvera Castro</span><span class="cm-company">Individual</span>
+        <div class="governance-card-content">
+          <div class="governance-name">Silvera Castro</div>
+          <div class="governance-title">Council Member</div>
+          <div class="governance-company">Individual</div>
+        </div>
       </div>
 
-      <div class="council-member">
-        <div class="cm-photo-circle">
+      <!-- 12. Omar Sweeney -->
+      <div class="governance-card">
+        <div class="governance-image">
           <img src="Images/OmarSweeney.png" alt="Omar Sweeney">
         </div>
-        <span class="cm-name">Omar Sweeney</span><span class="cm-company">Jamaica Social Investment Fund</span>
+        <div class="governance-card-content">
+          <div class="governance-name">Omar Sweeney</div>
+          <div class="governance-title">Council Member</div>
+          <div class="governance-company">Jamaica Social Investment Fund<br>Managing Director</div>
+        </div>
       </div>
 
-      <div class="council-member">
-        <div class="cm-photo-circle">
+      <!-- 13. Gregory Reid -->
+      <div class="governance-card">
+        <div class="governance-image">
           <img src="Images/GregoryReid.jpg" alt="Gregory Reid">
         </div>
-        <span class="cm-name">Gregory Reid</span><span class="cm-company">Gregory Reid Labour Professional</span>
+        <div class="governance-card-content">
+          <div class="governance-name">Gregory Reid</div>
+          <div class="governance-title">Council Member</div>
+          <div class="governance-company">Gregory Reid Labour Professional<br>Attorney-at-Law</div>
+        </div>
       </div>
 
-      <div class="council-member">
-        <div class="cm-photo-circle">
+      <!-- 14. Christopher Bond -->
+      <div class="governance-card">
+        <div class="governance-image">
           <img src="Images/ChristopherBond.jpg" alt="Christopher Bond">
         </div>
-        <span class="cm-name">Christopher Bond</span><span class="cm-company">GraceKennedy Limited</span>
-      </div>
-
-      <div class="council-member">
-        <div class="cm-photo-circle">
-          <img src="Images/DennisTownsend.jpg" alt="Dennis Townsend">
+        <div class="governance-card-content">
+          <div class="governance-name">Christopher Bond</div>
+          <div class="governance-title">Council Member</div>
+          <div class="governance-company">GraceKennedy Limited<br>Consultant</div>
         </div>
-        <span class="cm-name">Dennis Townsend</span><span class="cm-company">Individual</span>
       </div>
 
-      <div class="council-member">
-        <div class="cm-photo-circle">
-          <img src="Images/ChristeneKing.jpg" alt="R. Christene King">
+      <!-- 15. Dennis Townsend -->
+      <div class="governance-card">
+        <div class="governance-image">
+          <img src="Images/Dennis Townsend.jpg" alt="Dennis Townsend">
         </div>
-        <span class="cm-name">R. Christene King</span><span class="cm-company">Individual</span>
-      </div>
-
-      <div class="council-member">
-        <div class="cm-photo-circle">
-          <img src="Images/MarilynMcdonald.jpg" alt="Marilyn McDonald-Watson">
+        <div class="governance-card-content">
+          <div class="governance-name">Dennis Townsend</div>
+          <div class="governance-title">Council Member</div>
+          <div class="governance-company">Individual</div>
         </div>
-        <span class="cm-name">Marilyn McDonald-Watson</span><span class="cm-company">Jamaica Public Service</span>
       </div>
 
-      <div class="council-member">
-        <div class="cm-photo-circle cm-initials-circle">CS</div>
-        <span class="cm-name">Cheraulae Stewart</span><span class="cm-company">Securipro Limited</span>
+      <!-- 16. R. Christene King -->
+      <div class="governance-card">
+        <div class="governance-image">
+          <img src="Images/R Christine King.jpg" alt="R. Christene King">
+        </div>
+        <div class="governance-card-content">
+          <div class="governance-name">R. Christene King</div>
+          <div class="governance-title">Council Member</div>
+          <div class="governance-company">Individual</div>
+        </div>
       </div>
 
-      <div class="council-member">
-        <div class="cm-photo-circle cm-initials-circle">GM</div>
-        <span class="cm-name">Grace-Ann Miller</span><span class="cm-company">Guardsman Group Ltd.</span>
+      <!-- 17. Marilyn McDonald-Watson -->
+      <div class="governance-card">
+        <div class="governance-image">
+          <img src="Images/Marilyn McDonald-Watson.jpg" alt="Marilyn McDonald-Watson">
+        </div>
+        <div class="governance-card-content">
+          <div class="governance-name">Marilyn McDonald-Watson</div>
+          <div class="governance-title">Council Member</div>
+          <div class="governance-company">Jamaica Public Service<br>Manager - Community Renewal</div>
+        </div>
       </div>
 
-      <div class="council-member">
-        <div class="cm-photo-circle cm-initials-circle">DK</div>
-        <span class="cm-name">Dr. David Knight</span><span class="cm-company">Jamaica Information Service</span>
+      <!-- 18. Cheraulae Stewart -->
+      <div class="governance-card">
+        <div class="governance-image">
+          <img src="Images/Cheraulae Stewart.jpg" alt="Cheraulae Stewart">
+        </div>
+        <div class="governance-card-content">
+          <div class="governance-name">Cheraulae Stewart</div>
+          <div class="governance-title">Council Member</div>
+          <div class="governance-company">Securipro Limited<br>HR Manager</div>
+        </div>
       </div>
 
-      <div class="council-member">
-        <div class="cm-photo-circle cm-initials-circle">KS</div>
-        <span class="cm-name">Kerry-Ann Scott-Bernard</span><span class="cm-company">Stronghold Information Management</span>
+      <!-- 19. David Knight (Dr.) -->
+      <div class="governance-card">
+        <div class="governance-image">
+          <img src="Images/David Knight.jpg" alt="Dr. David Knight">
+        </div>
+        <div class="governance-card-content">
+          <div class="governance-name">Dr. David Knight</div>
+          <div class="governance-title">Council Member</div>
+          <div class="governance-company">Jamaica Information Service<br>Director – HRM & Development</div>
+        </div>
       </div>
 
-      <div class="council-member">
-        <div class="cm-photo-circle cm-initials-circle">DC</div>
-        <span class="cm-name">Desmond Campbell</span><span class="cm-company">Cleared Identity Limited</span>
+      <!-- 20. Kerri-Ann Scott-Bernard -->
+      <div class="governance-card">
+        <div class="governance-image">
+          <img src="Images/Kerri-Ann Scott-Bernard.jpg" alt="Kerri-Ann Scott-Bernard">
+        </div>
+        <div class="governance-card-content">
+          <div class="governance-name">Kerri-Ann Scott-Bernard</div>
+          <div class="governance-title">Council Member</div>
+          <div class="governance-company">Stronghold Information Management<br>General Manager</div>
+        </div>
       </div>
 
-      <div class="council-member">
-        <div class="cm-photo-circle cm-initials-circle">MI</div>
-        <span class="cm-name">Millicent Isaacs</span><span class="cm-company">Individual</span>
+      <!-- 21. Desmond Campbell -->
+      <div class="governance-card">
+        <div class="governance-image">
+          <img src="Images/Desmond Campbell.jpg" alt="Desmond Campbell">
+        </div>
+        <div class="governance-card-content">
+          <div class="governance-name">Desmond Campbell</div>
+          <div class="governance-title">Council Member</div>
+          <div class="governance-company">Cleared Identity Limited<br>Managing Director</div>
+        </div>
       </div>
-
     </div>
   </section>
 
