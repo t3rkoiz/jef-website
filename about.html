@@ -191,25 +191,21 @@
 
     /* ==================== PAGE HERO ==================== */
     .page-hero {
-      background: linear-gradient(135deg, var(--black) 0%, #1a1a1a 100%);
+      background:url('Images/jefhero.webp') center center / cover no-repeat;
       color: var(--white);
+      min-height: 750px;
       padding: var(--spacing-2xl) var(--spacing-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
 
-    .page-hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: -100px;
-      width: 400px;
-      height: 400px;
-      background-color: var(--gold);
-      opacity: 0.08;
-      border-radius: 50%;
-      z-index: 0;
+    .page-hero h1,
+    .page-hero p {
+      color: var(--white);
     }
 
     .page-hero::after {
@@ -270,37 +266,67 @@
     }
 
     .timeline {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: var(--spacing-lg);
+      position: relative;
       margin-top: var(--spacing-xl);
+      padding-left: 32px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold), var(--green));
     }
 
     .timeline-item {
-      background: linear-gradient(135deg, var(--off-white) 0%, #F3F3F3 100%);
-      padding: var(--spacing-lg);
-      border-radius: var(--radius-md);
-      border-left: 4px solid var(--gold);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      padding: 0 0 var(--spacing-xl) var(--spacing-lg);
     }
 
-    .timeline-item:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -25px;
+      top: 6px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 3px solid var(--white);
+      box-shadow: 0 0 0 2px var(--gold);
     }
 
     .timeline-item-year {
       font-family: var(--font-serif);
-      font-size: 1.75rem;
+      font-size: 1.4rem;
       font-weight: 700;
       color: var(--gold);
-      margin-bottom: var(--spacing-sm);
+      margin-bottom: 4px;
     }
 
     .timeline-item-text {
       font-size: 0.95rem;
       color: var(--text-light);
       line-height: 1.6;
+    }
+
+    /* ==================== CORE PRINCIPLES CARDS ==================== */
+    .core-principles {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-lg);
+      margin-top: var(--spacing-xl);
+    }
+
+    @media (max-width: 640px) {
+      .core-principles { grid-template-columns: 1fr; }
     }
 
     /* ==================== MISSION/VISION/VALUES SECTION ==================== */
@@ -404,6 +430,7 @@
     /* ==================== MESSAGES SECTION ==================== */
     .messages-section {
       background-color: var(--white);
+      padding-top: var(--spacing-2xl);
     }
 
     .messages-container {
@@ -730,9 +757,30 @@
   
   /* ── GOVERNANCE / COUNCIL ── */
   .council-section {
+    background-color: var(--black);
     padding: 80px 40px;
-    max-width: 1200px;
-    margin: 0 auto;
+  }
+  .council-section .section-label {
+    color: var(--gold);
+  }
+  .council-section .section-title {
+    color: var(--white);
+  }
+  .council-section .section-sub {
+    color: rgba(255,255,255,0.65);
+  }
+  .council-section .governance-card {
+    background: #1a1a1a;
+    border-color: rgba(255,255,255,0.1);
+  }
+  .council-section .governance-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+  }
+  .council-section .governance-name {
+    color: var(--white);
+  }
+  .council-section .governance-company {
+    color: rgba(255,255,255,0.55);
   }
   .council-officers {
     display: flex;
@@ -905,10 +953,6 @@
 
   <!-- PAGE HERO -->
   <section class="page-hero">
-    <div class="page-hero-content">
-      <h1>About the Jamaica Employers' Federation</h1>
-      <p class="hero-subtitle">Established 1958 · Kingston, Jamaica</p>
-    </div>
   </section>
 
   <!-- HISTORY SECTION -->
@@ -918,63 +962,30 @@
       <h2 class="section-title">Our History</h2>
 
       <p class="history-text">
-        The Jamaica Employers' Federation (JEF) was established in April 1958 and registered as a Trade Union to represent employers. Over more than six decades, JEF has transformed from a nascent organization into the voice of Jamaica's employers. The Federation's mission has always been to lead the development of an enabling business environment through the effective representation and provision of value-added services that strengthen the ability of employers to optimise competitiveness and workplace harmony.
+        The Jamaica Employers' Federation (JEF) was established in 1958 with the purpose of representing and safeguarding the interests of employers in their relationship with government and organised labour. Its mission is to lead the development of an enabling business environment through effective representation and the provision of value-added services that strengthen the ability of employers to optimize competitiveness and workplace harmony.
       </p>
 
       <p class="history-text">
-        The Federation has, over the years, assisted in transforming the Jamaican labour market and continues to lobby for labour market reform, especially in the face of globalisation. JEF currently makes its services available to a diverse array of sectors: commerce, community and social services, construction, transport, manufacturing, hospitality and tourism, telecommunications, wholesale and retail, NGOs, finance, mining and quarrying, and more. The membership spans the spectrum of private enterprise activities, from growing startups to the corridors of big business and quasi-government organizations.
+        As the only organization of its kind in Jamaica, JEF has a growing membership of over 300 corporate and individual members. JEF is also a member of the International Organization of Employers (IOE) and the Caribbean Employers' Confederation (CEC). JEF represents Jamaica's sole employer representative to the International Labour Organization (ILO), which is the only UN body with a tripartite structure that facilitates the interests of workers, governments, and employers.
       </p>
 
       <p class="history-text">
-        The organization's founding leadership included Mr. Douglas Judah, a noted lawyer, as its first President, succeeded by Mr. Hubert Arnold, Managing Director of Hardware and Lumber. This tradition of strong leadership has continued to shape JEF's advocacy and services over the decades.
+        Through extensive research and developmental activities, as well as its international affiliations, JEF has the expertise and reach to successfully fulfil its mandate both locally and regionally. The organization has significantly expanded its range of services to better support the business development and productivity needs of Jamaican employers.
       </p>
 
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-item-year">1958</div>
-          <div class="timeline-item-text">JEF Established and Registered as Trade Union</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-item-year">1960s–80s</div>
-          <div class="timeline-item-text">Labour Market Transformation & Advocacy</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-item-year">2000s</div>
-          <div class="timeline-item-text">Regional Expansion & Integration</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-item-year">2024–2029</div>
-          <div class="timeline-item-text">Strategic Plan: Digital & Green Transition</div>
-        </div>
-      </div>
-    </div>
-  </section>
+      <p class="history-text">
+        JEF's suite of services includes IR Consultancy, Research &amp; Development, Membership Services, Events Planning &amp; Coordination, Occupational Safety &amp; Health, Learning, Human Resources Development &amp; Workplace Solutions. With these services, JEF is well-equipped to provide its members with the necessary tools and resources to succeed in today's dynamic business environment.
+      </p>
 
-  <!-- MISSION / VISION / VALUES SECTION -->
-  <section class="mvv-section" id="mission">
-    <div style="max-width: 1200px; margin: 0 auto;">
-      <div class="section-label">Core Principles</div>
-      <h2 class="section-title">Our Mission, Vision &amp; Values</h2>
-    </div>
-
-    <div class="mvv-container">
-      <div class="mvv-card mission">
-        <h3><span class="mvv-icon">✓</span>Mission</h3>
-        <p>To lead the development of an enabling business environment through the effective representation and provision of value-added services that strengthens the ability of employers to optimise competitiveness and workplace harmony.</p>
-      </div>
-
-      <div class="mvv-card vision">
-        <h3><span class="mvv-icon">◆</span>Vision</h3>
-        <p>To remain the premier employers' organisation in the region, by continuously providing value-added services to our members, thereby assisting them in achieving global competitiveness.</p>
-      </div>
-
-      <div class="mvv-card values">
-        <h3><span class="mvv-icon">★</span>Values</h3>
-        <ul class="values-list">
-          <li><strong>Teamwork:</strong> Highly skilled, multi-disciplinary work team committed to learning and innovation</li>
-          <li><strong>Integrity:</strong> Conducting ourselves with honesty in relations with colleagues and the public</li>
-          <li><strong>Professionalism:</strong> Utmost professionalism in conduct and quality of work</li>
-        </ul>
+      <div class="core-principles">
+        <div class="mvv-card vision">
+          <h3><span class="mvv-icon">◆</span>Our Vision</h3>
+          <p>To remain the premiere employers' organization in the region, by continuously providing valuable services to our members, thereby assisting them in achieving global competitiveness.</p>
+        </div>
+        <div class="mvv-card mission">
+          <h3><span class="mvv-icon">✓</span>Our Mission</h3>
+          <p>To lead the development of an enabling business environment, through the effective representation and provision of value-added services that strengthen the ability of employers to optimize competitiveness and workplace harmony.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1035,7 +1046,8 @@
   </section>
 
   <!-- LEADERSHIP SECTION -->
-    <section class="council-section" id="leadership">
+  <section class="council-section" id="leadership">
+    <div style="max-width: 1200px; margin: 0 auto;">
     <div class="section-label">Governance</div>
     <div class="section-title">Executive Council</div>
     <p class="section-sub">JEF is led by an Executive Council representing a diverse cross-section of Jamaica's business community.</p>
