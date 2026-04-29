@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conventions — Jamaica Employers' Federation</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black:    #000000;
+    --black2:   #111111;
+    --black3:   #1A1A1A;
+    --gold:     #FED100;
+    --gold-dk:  #D4AE00;
+    --green:    #009B3A;
+    --green-dk: #007A2D;
+    --green-lt: #E8F7EE;
+    --white:    #FFFFFF;
+    --offwhite: #F9F9F9;
+    --gray:     #555555;
+    --gray-lt:  #F2F2F2;
+    --border:   #E0E0E0;
+    --font-serif: 'EB Garamond', Georgia, serif;
+    --font-sans:  'DM Sans', sans-serif;
+  }
+
+  body { font-family: var(--font-sans); color: var(--black3); background: var(--white); font-size: 16px; line-height: 1.6; }
+
+  /* ── UTILITY BAR ── */
+  .util-bar {
+    background: var(--black);
+    padding: 8px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    border-bottom: 1px solid rgba(254,209,0,0.15);
+  }
+  .util-bar a { color: rgba(255,255,255,0.55); text-decoration: none; margin-left: 20px; transition: color 0.15s; }
+  .util-bar a:hover { color: var(--gold); }
+  .util-links { display: flex; }
+
+  /* ── NAVBAR ── */
+  nav {
+    background: var(--white);
+    border-bottom: 2px solid var(--gold);
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  }
+  .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; flex: 1; min-width: 0; }
+  .logo-img { height: 52px; width: auto; display: block; object-fit: contain; }
+  .logo-text { flex: 1; min-width: 0; display: flex; align-items: center; justify-content: center; }
+  .logo-text p  { font-family: Helvetica, Arial, sans-serif; font-size: 36px; color: var(--black3); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; margin: 0; }
+
+  .nav-links { display: flex; align-items: center; gap: 4px; }
+  .nav-links a {
+    font-size: 13.5px; font-weight: 400;
+    color: var(--black3);
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 4px;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+  }
+  .nav-links a:hover { background: var(--gray-lt); color: var(--black); }
+  .nav-links a.active { color: var(--black); font-weight: 500; }
+
+  /* ── HAMBURGER ── */
+  .nav-toggle {
+    display: none; flex-direction: column; gap: 5px;
+    cursor: pointer; padding: 6px; background: none; border: none;
+  }
+  .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--black); border-radius: 2px; transition: transform 0.25s, opacity 0.25s; }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ── MOBILE DRAWER ── */
+  .mobile-drawer {
+    display: none; position: fixed;
+    top: 72px; left: 0; right: 0;
+    background: var(--white);
+    border-top: 2px solid var(--gold);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    z-index: 99; padding: 8px 0 24px;
+    flex-direction: column;
+    max-height: calc(100vh - 72px); overflow-y: auto;
+  }
+  .mobile-drawer.open { display: flex; }
+  .mobile-drawer a { font-size: 15px; color: var(--black3); text-decoration: none; padding: 13px 24px; border-bottom: 1px solid var(--border); font-weight: 400; }
+  .mobile-drawer a:last-of-type { border-bottom: none; }
+
+  /* ── HERO (slim conventions hero) ── */
+  .conv-hero {
+    background: var(--black);
+    padding: 72px 48px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .conv-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(135deg, rgba(254,209,0,0.08) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 50%, rgba(0,155,58,0.10) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .conv-hero-inner { position: relative; z-index: 1; max-width: 900px; }
+  .conv-hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(254,209,0,0.12);
+    border: 1px solid rgba(254,209,0,0.35);
+    color: var(--gold);
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 2px; margin-bottom: 20px;
+  }
+  .conv-hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
+  .conv-hero h1 {
+    font-family: var(--font-serif);
+    font-size: 48px; font-weight: 400;
+    color: var(--white); line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .conv-hero h1 em { color: var(--gold); font-style: italic; }
+  .conv-hero p {
+    font-size: 16px; color: rgba(255,255,255,0.75);
+    max-width: 680px; line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── YEAR PILLS / QUICK NAV ── */
+  .year-nav {
+    background: var(--offwhite);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 48px;
+    display: flex; align-items: center; gap: 14px;
+    overflow-x: auto;
+    position: sticky; top: 72px; z-index: 90;
+  }
+  .year-nav-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--gray);
+    margin-right: 4px; white-space: nowrap;
+  }
+  .year-pill {
+    font-size: 13px; font-weight: 500; color: var(--black3);
+    padding: 7px 16px; border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    background: var(--white);
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    white-space: nowrap;
+  }
+  .year-pill:hover { background: var(--black); color: var(--white); border-color: var(--black); }
+
+  /* ── CONVENTION CARD ── */
+  .conv-card {
+    padding: 72px 48px;
+    border-bottom: 1px solid var(--border);
+    scroll-margin-top: 140px;
+  }
+  .conv-card:nth-child(even) { background: var(--offwhite); }
+
+  .conv-card-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .conv-promo {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    background: var(--gray-lt);
+  }
+  .conv-promo img { width: 100%; height: auto; display: block; }
+  .conv-promo-fallback {
+    aspect-ratio: 16 / 9;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gray); font-size: 13px; text-align: center; padding: 24px;
+    font-style: italic;
+  }
+
+  .conv-meta-year {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--black);
+    font-family: var(--font-serif);
+    font-size: 28px; font-weight: 600;
+    padding: 6px 18px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    line-height: 1;
+  }
+  .conv-meta-edition {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--green); margin-bottom: 8px;
+  }
+  .conv-meta-title {
+    font-family: var(--font-serif);
+    font-size: 30px; font-weight: 500;
+    color: var(--black); line-height: 1.25;
+    margin-bottom: 14px;
+  }
+  .conv-meta-theme {
+    font-family: var(--font-serif);
+    font-size: 18px; font-style: italic;
+    color: var(--green-dk);
+    margin-bottom: 18px;
+    line-height: 1.4;
+  }
+  .conv-meta-detail {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 14px; color: var(--gray);
+    margin-bottom: 8px;
+  }
+  .conv-meta-detail strong {
+    font-weight: 500; color: var(--black3);
+    min-width: 70px;
+  }
+
+  .conv-summary {
+    font-size: 15px; color: var(--gray);
+    line-height: 1.7; font-weight: 300;
+    margin-top: 18px; margin-bottom: 24px;
+  }
+
+  .conv-panelists-label {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--black); margin-bottom: 14px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--gold);
+  }
+  .conv-panelists-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 20px;
+    list-style: none;
+  }
+  .conv-panelists-list li {
+    font-size: 13.5px; color: var(--black3);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--gray-lt);
+    line-height: 1.4;
+  }
+  .conv-panelists-list li span {
+    display: block;
+    font-size: 11.5px; color: var(--gray);
+    font-weight: 300;
+    margin-top: 2px;
+  }
+
+  /* ── PAST MOMENTS GALLERY ── */
+  .gallery-section {
+    background: var(--black);
+    padding: 72px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .gallery-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(135deg, rgba(254,209,0,0.04) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 50%, rgba(0,155,58,0.06) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .gallery-header {
+    max-width: 1280px;
+    margin: 0 auto 36px;
+    position: relative; z-index: 1;
+  }
+  .gallery-eyebrow {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px;
+  }
+  .gallery-title {
+    font-family: var(--font-serif);
+    font-size: 36px; font-weight: 400;
+    color: var(--white); line-height: 1.25;
+    margin-bottom: 12px;
+  }
+  .gallery-sub {
+    font-size: 15px; color: rgba(255,255,255,0.7);
+    max-width: 600px; line-height: 1.7;
+    font-weight: 300;
+  }
+  .gallery-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    position: relative; z-index: 1;
+  }
+  .gallery-tile {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: 6px;
+    background: var(--black2);
+    position: relative;
+    cursor: zoom-in;
+    border: 1px solid rgba(254,209,0,0.08);
+  }
+  .gallery-tile img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease, opacity 0.3s ease;
+    opacity: 0.85;
+  }
+  .gallery-tile:hover img {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 1000;
+    align-items: center; justify-content: center;
+    padding: 24px;
+    cursor: zoom-out;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 100%; max-height: 90vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 8px 48px rgba(0,0,0,0.6);
+  }
+  .lightbox-close {
+    position: absolute; top: 16px; right: 20px;
+    background: none; border: none;
+    color: var(--white);
+    font-size: 32px; cursor: pointer;
+    padding: 8px 14px; line-height: 1;
+    transition: color 0.15s;
+  }
+  .lightbox-close:hover { color: var(--gold); }
+
+  /* ── CONVENTION BAND (CTA — same as index.html) ── */
+  .convention-band {
+    background: var(--gold);
+    padding: 48px;
+    display: flex; align-items: center; justify-content: space-between; gap: 32px;
+  }
+  .conv-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(0,0,0,0.55); font-weight: 500; margin-bottom: 6px; }
+  .conv-title { font-family: var(--font-serif); font-size: 30px; color: var(--black); font-weight: 500; line-height: 1.2; }
+  .conv-date  { font-size: 14px; color: rgba(0,0,0,0.6); margin-top: 8px; font-weight: 300; }
+  .btn-black {
+    background: var(--black); color: var(--white);
+    padding: 13px 32px; font-size: 14px; font-weight: 500;
+    border-radius: 3px; text-decoration: none; white-space: nowrap;
+    display: inline-block; transition: background 0.15s;
+    font-family: var(--font-sans);
+  }
+  .btn-black:hover { background: #222; }
+
+  /* ── FOOTER ── */
+  footer { background: #0A0A0A; color: rgba(255,255,255,0.45); padding: 60px 48px 32px; }
+  .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-logo { margin-bottom: 16px; }
+  .footer-logo-img { height: 64px; width: auto; display: block; object-fit: contain; }
+  .footer-about { font-size: 13px; line-height: 1.7; font-weight: 300; max-width: 280px; }
+  .footer-contact { margin-top: 20px; font-size: 12px; line-height: 1.8; }
+  .footer-col h5 { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 16px; }
+  .footer-col a { display: block; color: rgba(255,255,255,0.5); font-size: 13px; text-decoration: none; margin-bottom: 8px; transition: color 0.15s; font-weight: 300; }
+  .footer-col a:hover { color: var(--green); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
+  .footer-bottom a { color: rgba(255,255,255,0.3); text-decoration: none; margin-left: 16px; }
+  .footer-bottom a:hover { color: var(--gold); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .util-bar { padding: 8px 20px; }
+    .util-bar > span { display: none; }
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .logo-text p { display: none; }
+
+    .conv-hero { padding: 56px 24px 40px; }
+    .conv-hero h1 { font-size: 34px; }
+    .conv-hero p { font-size: 15px; }
+
+    .year-nav { padding: 14px 24px; top: 72px; }
+
+    .conv-card { padding: 56px 24px; }
+    .conv-card-inner { grid-template-columns: 1fr; gap: 32px; }
+    .conv-meta-title { font-size: 24px; }
+    .conv-meta-theme { font-size: 16px; }
+    .conv-panelists-list { grid-template-columns: 1fr; }
+
+    .gallery-section { padding: 56px 24px; }
+    .gallery-title { font-size: 28px; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+
+    .convention-band { flex-direction: column; align-items: flex-start; padding: 36px 24px; gap: 20px; }
+    .conv-title { font-size: 24px; }
+    .btn-black { width: 100%; text-align: center; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+    footer { padding: 48px 24px 24px; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  }
+
+  @media (max-width: 560px) {
+    .util-bar { display: none; }
+    nav { height: 60px; padding: 0 16px; }
+    .mobile-drawer { top: 60px; }
+    .year-nav { top: 60px; padding: 12px 16px; }
+
+    .conv-hero { padding: 40px 16px 32px; }
+    .conv-hero h1 { font-size: 28px; }
+    .conv-card { padding: 44px 16px; }
+    .conv-meta-year { font-size: 22px; padding: 5px 14px; }
+    .conv-meta-title { font-size: 20px; }
+
+    .gallery-section { padding: 44px 16px; }
+    .gallery-title { font-size: 24px; }
+    .gallery-grid { grid-template-columns: 1fr; gap: 10px; }
+
+    .convention-band { padding: 28px 16px; }
+    .footer-top { grid-template-columns: 1fr; gap: 24px; }
+    footer { padding: 40px 16px 20px; }
+  }
+
+  svg { display: block; }
+</style>
+</head>
+<body>
+
+  <!-- UTILITY BAR -->
+  <div class="util-bar">
+    <span>2A Ruthven Road, Kingston 10 &nbsp;&middot;&nbsp; (876) 926-6762</span>
+    <div class="util-links">
+      <a href="membership.html">Member Portal</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="index.html" class="logo">
+      <img src="Images/JEFLOGO2.png" alt="Jamaica Employers&#39; Federation" class="logo-img">
+      <div class="logo-text">
+        <p>JAMAICA EMPLOYERS FEDERATION</p>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About JEF</a>
+      <a href="services.html">Services</a>
+      <a href="membership.html">Membership</a>
+      <a href="staff.html">Our Staff</a>
+      <a href="news.html">News &amp; Events</a>
+      <a href="resources.html">Resources</a>
+      <a href="conventions.html" class="active">Conventions</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <a href="index.html">Home</a>
+    <a href="about.html">About JEF</a>
+    <a href="services.html">Services</a>
+    <a href="membership.html">Membership</a>
+    <a href="staff.html">Our Staff</a>
+    <a href="news.html">News &amp; Events</a>
+    <a href="resources.html">Resources</a>
+    <a href="conventions.html">Conventions</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="conv-hero">
+    <div class="conv-hero-inner">
+      <div class="conv-hero-eyebrow">Annual Flagship Event</div>
+      <h1>JEF <em>Conventions</em></h1>
+      <p>For more than four decades, the Annual JEF Convention has gathered Caribbean business leaders, policymakers, HR practitioners, and global thought-leaders to chart the future of work in Jamaica. Browse past editions below.</p>
+    </div>
+  </section>
+
+  <!-- YEAR QUICK-NAV -->
+  <div class="year-nav">
+    <span class="year-nav-label">Jump to</span>
+    <a href="#convention-2025" class="year-pill">2025 — 41st Annual</a>
+    <a href="#convention-2024" class="year-pill">2024 — Virtual</a>
+    <a href="#convention-2023" class="year-pill">2023 — Virtual</a>
+  </div>
+
+  <!-- 2025 CONVENTION -->
+  <section class="conv-card" id="convention-2025">
+    <div class="conv-card-inner">
+      <div class="conv-promo">
+        <img src="Images/convention2025.webp" alt="JEF 41st Annual Business &amp; Workplace Convention 2025">
+      </div>
+      <div>
+        <span class="conv-meta-year">2025</span>
+        <div class="conv-meta-edition">41st Annual Business &amp; Workplace Convention</div>
+        <h2 class="conv-meta-title">Empowering Tomorrow</h2>
+        <p class="conv-meta-theme">"Leadership, Adaptability, Sustainability"</p>
+        <div class="conv-meta-detail"><strong>Dates:</strong> May 15–16, 2025</div>
+        <div class="conv-meta-detail"><strong>Format:</strong> In-Person &amp; Virtual</div>
+        <div class="conv-meta-detail"><strong>Venue:</strong> Jamaica Conference Centre, Kingston</div>
+        <p class="conv-summary">JEF's 41st annual flagship gathering focused on equipping Caribbean business leaders with the leadership skills, adaptive strategies, and sustainability frameworks needed to navigate a rapidly changing world of work.</p>
+
+        <div class="conv-panelists-label">Featured Speakers &amp; Panelists</div>
+        <ul class="conv-panelists-list">
+          <li>Hon. Pearnel Charles Jnr<span>Minister of Labour &amp; Social Security</span></li>
+          <li>Mr. Wayne Chen<span>President &amp; Convention Director, JEF</span></li>
+          <li>Robert Lemon, PhD<span>Believe Your Dreams Inc.</span></li>
+          <li>Dr. Kevin Brown<span>President, University of Technology</span></li>
+          <li>Scarlett Howery<span>VP Workforce Solutions, DeVry &amp; Keller Graduate</span></li>
+          <li>Victoria Giulietti<span>ILO Decent Work Team — Caribbean</span></li>
+          <li>Tamar Nelson<span>Chief Technical Director, Jamaica Productivity Centre</span></li>
+          <li>Patrice Gordon<span>Founder &amp; CEO, Eminere</span></li>
+          <li>Gil Crosby<span>President, Crosby &amp; Associates LLC</span></li>
+          <li>Magdalena Cooper-de Neuze<span>Lifestyle Planning Services</span></li>
+          <li>Carla-Anne Harris-Roper<span>Employment Matters Caribbean</span></li>
+          <li>Danny Roberts<span>Deputy Chairman, Industrial Disputes Tribunal</span></li>
+          <li>Kadrea Folkes<span>Law Offices of Khadrea Folkes</span></li>
+          <li>Ms. Monique N. Morrison<span>Monique Morrison Law</span></li>
+          <li>Dr. William W. Lawrence<span>Jamaica Stock Exchange e-Campus</span></li>
+          <li>Dr. Colleen Bancroft<span>HR Manager, GraceKennedy Limited</span></li>
+          <li>Dr. Nicole Manning<span>Director of Operations, Caribbean Examinations Council</span></li>
+          <li>Dr. Cecile Dennis<span>University of the Commonwealth Caribbean</span></li>
+          <li>Stacy Goodin<span>Wellness &amp; Client Engagement, Sagicor Life Jamaica</span></li>
+          <li>Marlon Mahon<span>Min. of Labour — OSH</span></li>
+          <li>Colin Barnett<span>HR Development &amp; Administration, PETROJAM</span></li>
+          <li>Dr. Rajeev Venugopal<span>Consultant Physician, University Hospital of the West Indies</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2024 CONVENTION -->
+  <section class="conv-card" id="convention-2024">
+    <div class="conv-card-inner">
+      <div class="conv-promo">
+        <img src="Images/convention2024.webp" alt="JEF Virtual Convention 2024">
+      </div>
+      <div>
+        <span class="conv-meta-year">2024</span>
+        <div class="conv-meta-edition">40th Annual Virtual Convention</div>
+        <h2 class="conv-meta-title">Business Transformation</h2>
+        <p class="conv-meta-theme">"Sharing Strategies for Success"</p>
+        <div class="conv-meta-detail"><strong>Dates:</strong> May 16–17, 2024</div>
+        <div class="conv-meta-detail"><strong>Format:</strong> Virtual</div>
+        <div class="conv-meta-detail"><strong>Sponsors:</strong> Flow Business · HEART/NSTA Trust</div>
+        <p class="conv-summary">A two-day virtual convention bringing together global thought-leaders, ministers, and HR practitioners to share practical strategies for business transformation across Jamaica and the wider Caribbean.</p>
+
+        <div class="conv-panelists-label">Featured Speakers &amp; Panelists</div>
+        <ul class="conv-panelists-list">
+          <li>Mr. Wayne Chen<span>President, JEF &amp; Convention Director</span></li>
+          <li>Sen. Hon. Dana Morris Dixon<span>Minister of Skills &amp; Digital Transformation</span></li>
+          <li>Hon. Pearnel Charles<span>Minister of Labour &amp; Social Security</span></li>
+          <li>Hon. Michael Lee-Chin<span>Chairman, NCB Financial Group</span></li>
+          <li>Elliott Maisie<span>CEO, The MASIE Learning Foundation</span></li>
+          <li>John Formica<span>Productivity Consultant</span></li>
+          <li>Coach Sidney &amp; Dr. Takisha Moncrief<span>Partners, Moncrief One Team</span></li>
+          <li>Maria Thompson-Walters<span>Executive Director, Transformation Implementation Unit</span></li>
+          <li>John Sherman, SPHR<span>Pipeline Talent Development, Altec Industries</span></li>
+          <li>Victoria Giulietti<span>Senior Specialist, ILO</span></li>
+          <li>Dr. Robert Lemon<span>Professional Speaker, Believe Your Dreams Inc.</span></li>
+          <li>Vanessa Thomas-Williams<span>Attorney-at-Law</span></li>
+          <li>Dr. Minerva Pinela Alvarez<span>MD, Right Insights — Belize</span></li>
+          <li>Dr. Yohann White<span>Director, Para Caribe Consulting Ltd</span></li>
+          <li>Michel Neray<span>Speaker &amp; Messaging Expert, Concentric Strategies</span></li>
+          <li>Nora Blake<span>Manager, Jamaica Social Stock Exchange</span></li>
+          <li>Shellie Leon<span>CEO, Companies Office of Jamaica</span></li>
+          <li>Dr. David S. Cohen, EdD<span>Owner, DS Cohen &amp; Associates</span></li>
+          <li>Dr. Patrick Sterling<span>SHRM-SCP HR Consultant</span></li>
+          <li>Janel Williams<span>Legal Officer, Jamaica Council for Persons with Disabilities</span></li>
+          <li>Sheila Segree-White<span>VP HR, WorkSafe Global Ltd.</span></li>
+          <li>Elva Clarke<span>Co-CEO, WorkSafe Global Ltd.</span></li>
+          <li>Acres Stowe<span>Business &amp; Legal Consultant, eMatrix LLC</span></li>
+          <li>Pirabu Pathmanesan<span>Data Security Architect, IBM Canada</span></li>
+          <li>John Pilgrim<span>Productivity Consultant</span></li>
+          <li>Clifton Reader<span>VP, Palace Resorts &amp; 1st VP, JEF</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2023 CONVENTION -->
+  <section class="conv-card" id="convention-2023">
+    <div class="conv-card-inner">
+      <div class="conv-promo">
+        <img src="Images/convention2023.webp" alt="JEF Virtual Convention 2023">
+      </div>
+      <div>
+        <span class="conv-meta-year">2023</span>
+        <div class="conv-meta-edition">39th Annual Virtual Convention</div>
+        <h2 class="conv-meta-title">Innovate, Integrate, Implement</h2>
+        <p class="conv-meta-theme">"28 Presenters · 2 Days · Affordable"</p>
+        <div class="conv-meta-detail"><strong>Dates:</strong> May 18–19, 2023</div>
+        <div class="conv-meta-detail"><strong>Format:</strong> Virtual</div>
+        <p class="conv-summary">JEF's flagship virtual convention featured a keynote from the Most Honourable Andrew Holness, Prime Minister of Jamaica, alongside 28 presenters guiding employers through innovation, integration, and implementation in a post-pandemic economy.</p>
+
+        <div class="conv-panelists-label">Featured Speakers &amp; Panelists</div>
+        <ul class="conv-panelists-list">
+          <li>The Most Hon. Andrew Holness, ON, PC, MP<span>Prime Minister of Jamaica (Keynote)</span></li>
+          <li>Dr. Taneisha Ingleton<span>Managing Director, HEART/NSTA Trust</span></li>
+          <li>Alvin Day<span>Executive Leadership Coach &amp; Staff Engagement Coach</span></li>
+          <li>Dr. Shirley Davis<span>President &amp; CEO, SDS Global Enterprises</span></li>
+          <li>John Sherman, SPHR<span>Manager, Pipeline Talent Development, Altec Industries</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAST MOMENTS GALLERY -->
+  <section class="gallery-section" id="past-moments">
+    <div class="gallery-header">
+      <div class="gallery-eyebrow">Past Convention Moments</div>
+      <h2 class="gallery-title">Highlights from the JEF Convention archive</h2>
+      <p class="gallery-sub">Snapshots from past plenary sessions, panel discussions, networking moments, and award ceremonies. Click any image to view full size.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-tile"><img src="convention/-%20(1).jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/-%20(2).jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/-%20(3).jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/-%20(4).jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/-%20(5).jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/-%20(6).jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/-%20(7).jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/-%20(8).jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/-%20(9).jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/-%20(11).jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/-%20(12).jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/-%20(13).jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/-%20(14).jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/-%20(15).jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/-%20(16).jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/-%20(17).jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/-%20(18).jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/-%20(19).jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/-%20(20).jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/-%20(21).jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/-%20(22).jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/-%20(23).jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/cr-t-0--l-0--w-100--h-100-.jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/cr-t-0--l-0--w-100--h-100-%20(1).jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/cr-t-0--l-0--w-100--h-100-%20(2).jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/JEF%20front%20page.png" alt="JEF Convention front page" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/rs-w-1023-h-677%20(3).jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/rs-w-1023-h-687%20(3).webp" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/rs-w-1280-h-859.jpg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/rs-w-1280-h-931.jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/rs-w-1280-h-1280.jpeg" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/rs-w-1300-h-800%20(12).webp" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/rs-w-1300-h-800%20(13).webp" alt="JEF Convention moment" loading="lazy"></div>
+      <div class="gallery-tile"><img src="convention/rs-w-1300-h-800%20(18).webp" alt="JEF Convention moment" loading="lazy"></div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+    <img id="lightboxImg" src="" alt="">
+  </div>
+
+  <!-- CONVENTION BAND CTA -->
+  <div class="convention-band">
+    <div>
+      <div class="conv-label">42nd Annual Flagship Event</div>
+      <div class="conv-title">JEF Convention 2026</div>
+      <div class="conv-date">Save the date — registrations and full programme to be announced soon. Contact the JEF Secretariat to be notified.</div>
+    </div>
+    <a href="#contact" class="btn-black">Notify Me →</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo"><img src="Images/Jef Logo.jpg" alt="Jamaica Employers' Federation" class="footer-logo-img"></div>
+        <p class="footer-about">Established in 1958, JEF is the sole employers' representative to the ILO in Jamaica and the only organisation of its kind in the region, representing 300+ corporate and individual members.</p>
+        <div class="footer-contact">
+          2A Ruthven Road, Kingston 10, Jamaica<br>
+          (876) 926-6762 / 5524 / 6908
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <a href="services.html">Human Resources</a>
+        <a href="services.html">Health &amp; Safety</a>
+        <a href="services.html">Event Planning</a>
+        <a href="services.html">Business Development</a>
+        <a href="services.html">IR &amp; Policy</a>
+        <a href="services.html">Research</a>
+      </div>
+      <div class="footer-col">
+        <h5>Organisation</h5>
+        <a href="about.html">About JEF</a>
+        <a href="about.html">History</a>
+        <a href="about.html">Executives</a>
+        <a href="about.html">Vision &amp; Mission</a>
+        <a href="membership.html">Membership</a>
+      </div>
+      <div class="footer-col">
+        <h5>Resources</h5>
+        <a href="resources.html">Research Papers</a>
+        <a href="resources.html">Webinar Library</a>
+        <a href="conventions.html">Conventions</a>
+        <a href="resources.html">JEF Online</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Jamaica Employers' Federation. All rights reserved.</span>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const drawer = document.getElementById('mobileDrawer');
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('open');
+      drawer.classList.toggle('open');
+    });
+    drawer.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        toggle.classList.remove('open');
+        drawer.classList.remove('open');
+      });
+    });
+
+    // Gallery lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+    document.querySelectorAll('.gallery-tile img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('open');
+      });
+    });
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightboxImg.src = '';
+    }
+    lightbox.addEventListener('click', closeLightbox);
+    lightboxClose.addEventListener('click', (e) => { e.stopPropagation(); closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+    });
+  </script>
+</body>
+</html>
