@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Executive Council — Jamaica Employers' Federation</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black:    #000000;
+    --black2:   #111111;
+    --black3:   #1A1A1A;
+    --gold:     #FED100;
+    --gold-dk:  #D4AE00;
+    --green:    #009B3A;
+    --green-dk: #007A2D;
+    --green-lt: #E8F7EE;
+    --white:    #FFFFFF;
+    --offwhite: #F9F9F9;
+    --gray:     #555555;
+    --gray-lt:  #F2F2F2;
+    --border:   #E0E0E0;
+    --text-light: #555555;
+    --font-serif: 'EB Garamond', Georgia, serif;
+    --font-sans:  'DM Sans', sans-serif;
+  }
+
+  body { font-family: var(--font-sans); color: var(--black3); background: var(--white); font-size: 16px; line-height: 1.6; }
+
+  /* ── UTILITY BAR ── */
+  .util-bar {
+    background: var(--black);
+    padding: 8px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    border-bottom: 1px solid rgba(254,209,0,0.15);
+  }
+  .util-bar a { color: rgba(255,255,255,0.55); text-decoration: none; margin-left: 20px; transition: color 0.15s; }
+  .util-bar a:hover { color: var(--gold); }
+  .util-links { display: flex; }
+
+  /* ── NAVBAR ── */
+  nav {
+    background: var(--white);
+    border-bottom: 2px solid var(--gold);
+    padding: 0 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  }
+  .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; flex: 1; min-width: 0; }
+  .logo-img { height: 52px; width: auto; display: block; object-fit: contain; }
+  .logo-text { flex: 1; min-width: 0; display: flex; align-items: center; justify-content: center; }
+  .logo-text p  { font-family: Helvetica, Arial, sans-serif; font-size: 36px; color: var(--black3); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; margin: 0; }
+
+  .nav-links { display: flex; align-items: center; gap: 4px; }
+  .nav-links a {
+    font-size: 13.5px; font-weight: 400;
+    color: var(--black3); text-decoration: none;
+    padding: 8px 14px; border-radius: 4px;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+  }
+  .nav-links a:hover { background: var(--gray-lt); color: var(--black); }
+  .nav-links a.active { color: var(--black); font-weight: 500; }
+
+  /* ── HAMBURGER ── */
+  .nav-toggle {
+    display: none; flex-direction: column; gap: 5px;
+    cursor: pointer; padding: 6px; background: none; border: none;
+  }
+  .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--black); border-radius: 2px; transition: transform 0.25s, opacity 0.25s; }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ── MOBILE DRAWER ── */
+  .mobile-drawer {
+    display: none; position: fixed;
+    top: 72px; left: 0; right: 0;
+    background: var(--white);
+    border-top: 2px solid var(--gold);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    z-index: 99; padding: 8px 0 24px;
+    flex-direction: column;
+    max-height: calc(100vh - 72px); overflow-y: auto;
+  }
+  .mobile-drawer.open { display: flex; }
+  .mobile-drawer a { font-size: 15px; color: var(--black3); text-decoration: none; padding: 13px 24px; border-bottom: 1px solid var(--border); font-weight: 400; }
+  .mobile-drawer a:last-of-type { border-bottom: none; }
+
+  /* ── COUNCIL PAGE HERO ── */
+  .council-page-hero {
+    background: var(--black);
+    padding: 80px 48px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .council-page-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(135deg, rgba(254,209,0,0.06) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 50%, rgba(0,155,58,0.08) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .council-page-hero-inner { position: relative; z-index: 1; max-width: 900px; }
+  .council-page-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(254,209,0,0.12);
+    border: 1px solid rgba(254,209,0,0.35);
+    color: var(--gold);
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 2px; margin-bottom: 22px;
+  }
+  .council-page-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
+  .council-page-hero h1 {
+    font-family: var(--font-serif);
+    font-size: 48px; font-weight: 400;
+    color: var(--white); line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .council-page-hero h1 em { color: var(--gold); font-style: italic; }
+  .council-page-hero p {
+    font-size: 16px; color: rgba(255,255,255,0.75);
+    max-width: 680px; line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── COUNCIL GRID SECTION ── */
+  .council-section {
+    background-color: var(--black);
+    padding: 32px 48px 96px;
+  }
+  .council-grid-wrap { max-width: 1280px; margin: 0 auto; }
+
+  .governance-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+  }
+  .governance-card {
+    background: #1a1a1a;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+  }
+  .governance-card:hover {
+    box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+    transform: translateY(-2px);
+    border-color: rgba(254,209,0,0.2);
+  }
+  .governance-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #0e0e0e;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    overflow: hidden;
+  }
+  .governance-image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .governance-card-content { padding: 16px 16px 18px; }
+  .governance-name {
+    font-family: var(--font-serif);
+    font-size: 16px; font-weight: 600;
+    color: var(--white);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  .governance-title {
+    font-size: 11px; font-weight: 600;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+  .governance-company {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.5;
+  }
+
+  /* Officer cards (top 7) get a subtle accent */
+  .governance-card.officer { border-color: rgba(254,209,0,0.18); }
+  .governance-card.officer .governance-title { color: var(--gold); }
+
+  /* ── BACK CTA ── */
+  .back-cta {
+    background: var(--offwhite);
+    padding: 40px 48px;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+  }
+  .back-cta a {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13.5px; color: var(--green-dk); font-weight: 500;
+    text-decoration: none; padding: 8px 0;
+    border-bottom: 1px solid var(--green-dk);
+  }
+  .back-cta a:hover { color: var(--black); border-bottom-color: var(--black); }
+
+  /* ── FOOTER ── */
+  footer { background: #0A0A0A; color: rgba(255,255,255,0.45); padding: 60px 48px 32px; }
+  .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-logo { margin-bottom: 16px; }
+  .footer-logo-img { height: 64px; width: auto; display: block; object-fit: contain; }
+  .footer-about { font-size: 13px; line-height: 1.7; font-weight: 300; max-width: 280px; }
+  .footer-contact { margin-top: 20px; font-size: 12px; line-height: 1.8; }
+  .footer-col h5 { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 16px; }
+  .footer-col a { display: block; color: rgba(255,255,255,0.5); font-size: 13px; text-decoration: none; margin-bottom: 8px; transition: color 0.15s; font-weight: 300; }
+  .footer-col a:hover { color: var(--green); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
+  .footer-bottom a { color: rgba(255,255,255,0.3); text-decoration: none; margin-left: 16px; }
+  .footer-bottom a:hover { color: var(--gold); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1280px) {
+    .logo-text p { font-size: 22px; letter-spacing: 0.05em; }
+    nav { padding: 0 32px; }
+    .nav-links a { font-size: 13px; padding: 8px 10px; }
+  }
+  @media (max-width: 1100px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+  }
+  @media (max-width: 900px) {
+    .util-bar { padding: 8px 20px; }
+    .util-bar > span { display: none; }
+    nav { padding: 0 20px; }
+
+    .council-page-hero { padding: 56px 24px 36px; }
+    .council-page-hero h1 { font-size: 34px; }
+    .council-page-hero p { font-size: 15px; }
+    .council-section { padding: 24px 24px 64px; }
+    .governance-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+    .back-cta { padding: 28px 24px; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+    footer { padding: 48px 24px 24px; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  }
+  @media (max-width: 560px) {
+    .util-bar { display: none; }
+    nav { height: 60px; padding: 0 12px; }
+    .mobile-drawer { top: 60px; }
+    .logo-img { height: 40px; }
+    .logo-text p { font-size: 14px; letter-spacing: 0.03em; }
+
+    .council-page-hero { padding: 40px 16px 28px; }
+    .council-page-hero h1 { font-size: 28px; }
+    .council-section { padding: 16px 16px 48px; }
+    .governance-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .governance-image { aspect-ratio: 1 / 1; }
+    .governance-card-content { padding: 12px 12px 14px; }
+    .governance-name { font-size: 14px; }
+    .footer-top { grid-template-columns: 1fr; gap: 24px; }
+    footer { padding: 40px 16px 20px; }
+  }
+
+  svg { display: block; }
+</style>
+</head>
+<body>
+
+  <!-- UTILITY BAR -->
+  <div class="util-bar">
+    <span>2A Ruthven Road, Kingston 10 &nbsp;&middot;&nbsp; (876) 926-6762</span>
+    <div class="util-links">
+      <a href="membership.html">Member Portal</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="index.html" class="logo">
+      <img src="Images/JEFLOGO2.png" alt="Jamaica Employers&#39; Federation" class="logo-img">
+      <div class="logo-text">
+        <p>JAMAICA EMPLOYERS' FEDERATION</p>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About JEF</a>
+      <a href="executive-council.html" class="active">Executive Council</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <a href="index.html">Home</a>
+    <a href="about.html">About JEF</a>
+    <a href="executive-council.html">Executive Council</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="council-page-hero">
+    <div class="council-page-hero-inner">
+      <div class="council-page-eyebrow">Governance · 2026–2028</div>
+      <h1>Executive <em>Council</em></h1>
+      <p>JEF is led by an Executive Council elected for the period April 2026 to March 2028, representing a diverse cross-section of Jamaica's business community — from manufacturing, finance, and retail to law, public service, and entrepreneurship.</p>
+    </div>
+  </section>
+
+  <!-- COUNCIL GRID -->
+  <section class="council-section">
+    <div class="council-grid-wrap">
+      <div class="governance-grid">
+
+        <!-- 1. Wayne Chen - President -->
+        <div class="governance-card officer">
+          <div class="governance-image"><img src="Images/Wayne Chen President.jpg" alt="Wayne Chen"></div>
+          <div class="governance-card-content">
+            <div class="governance-name">Wayne Chen</div>
+            <div class="governance-title">President</div>
+            <div class="governance-company">Individual</div>
+          </div>
+        </div>
+
+        <!-- 2. Judon Bowden - 1st Vice President -->
+        <div class="governance-card officer">
+          <div class="governance-image"><img src="Images/Judon Bowen - 1st Vice President.jpg" alt="Judon Bowden"></div>
+          <div class="governance-card-content">
+            <div class="governance-name">Judon Bowden</div>
+            <div class="governance-title">1st Vice President</div>
+            <div class="governance-company">Red Stripe<br>Head of Human Resources</div>
+          </div>
+        </div>
+
+        <!-- 3. Cordell Williams-Graham - 2nd Vice President -->
+        <div class="governance-card officer">
+          <div class="governance-image"><img src="Images/Cordell Williams-Graham 2nd Vice President.jpg" alt="Cordell Williams-Graham"></div>
+          <div class="governance-card-content">
+            <div class="governance-name">Cordell Williams-Graham</div>
+            <div class="governance-title">2nd Vice President</div>
+            <div class="governance-company">Young Entrepreneurs' Association<br>President</div>
+          </div>
+        </div>
+
+        <!-- 4. Orville A. Hill - Treasurer -->
+        <div class="governance-card officer">
+          <div class="governance-image"><img src="Images/Orville Hill - Treasurer.jpg" alt="Orville A. Hill"></div>
+          <div class="governance-card-content">
+            <div class="governance-name">Orville A. Hill</div>
+            <div class="governance-title">Treasurer</div>
+            <div class="governance-company">Campbell's Office Supplies Ltd.<br>Director</div>
+          </div>
+        </div>
+
+        <!-- 5. The Hon. Ian Forbes - Trustee -->
+        <div class="governance-card officer">
+          <div class="governance-image"><img src="Images/Hon. Ian Forbes - Trustee.jpg" alt="The Hon. Ian Forbes"></div>
+          <div class="governance-card-content">
+            <div class="governance-name">The Hon. Ian Forbes</div>
+            <div class="governance-title">Trustee</div>
+            <div class="governance-company">Sherwin-Williams (W.I.) Ltd.<br>Retired</div>
+          </div>
+        </div>
+
+        <!-- 6. Hopelin Hines (Dr.) - Trustee -->
+        <div class="governance-card officer">
+          <div class="governance-image"><img src="Images/hopelinenew.jpg" alt="Dr. Hopelin Hines"></div>
+          <div class="governance-card-content">
+            <div class="governance-name">Dr. Hopelin Hines</div>
+            <div class="governance-title">Trustee</div>
+            <div class="governance-company">National Commercial Bank<br>VP - Group Human Resources</div>
+          </div>
+        </div>
+
+        <!-- 7. Caron Anderson - Secretary -->
+        <div class="governance-card officer">
+          <div class="governance-image"><img src="Images/Caron Anderson - Secretary.jpg" alt="Caron Anderson"></div>
+          <div class="governance-card-content">
+            <div class="governance-name">Caron Anderson</div>
+            <div class="governance-title">Secretary</div>
+            <div class="governance-company">Kingston Freeport Terminal Ltd.<br>Chief Human Resources Officer</div>
+          </div>
+        </div>
+
+        <!-- 8. Michael Archer -->
+        <div class="governance-card">
+          <div class="governance-image"><img src="Images/Michael Archer.jpg" alt="Michael Archer"></div>
+          <div class="governance-card-content">
+            <div class="governance-name">Michael Archer</div>
+            <div class="governance-title">Council Member</div>
+            <div class="governance-company">Individual</div>
+          </div>
+        </div>
+
+        <!-- 9. Christopher Bond -->
+        <div class="governance-card">
+          <div class="governance-image"><img src="Images/reidnew.jpg" alt="Christopher Bond"></div>
+          <div class="governance-card-content">
+            <div class="governance-name">Christopher Bond</div>
+            <div class="governance-title">Council Member</div>
+            <div class="governance-company">GraceKennedy Limited<br>Consultant</div>
+          </div>
+        </div>
+
+        <!-- 10. Desmond Campbell -->
+        <div class="governance-card">
+          <div class="governance-image"><img src="Images/image (2).jpg" alt="Desmond Campbell"></div>
+          <div class="governance-card-content">
+            <div class="governance-name">Desmond Campbell</div>
+            <div class="governance-title">Council Member</div>
+            <div class="governance-company">Cleared Identity Limited<br>Managing Director</div>
+          </div>
+        </div>
+
+        <!-- 11. Silvera Castro -->
+        <div class="governance-card">
+          <div class="governance-image"><img src="Images/SilveraCastro.jpg" alt="Silvera Castro"></div>
+          <div class="governance-card-content">
+            <div class="governance-name">Silvera Castro</div>
+            <div class="governance-title">Council Member</div>
+            <div class="governance-company">Individual</div>
+          </div>
+        </div>
+
+        <!-- 12. R. Christene King -->
+        <div class="governance-card">
+          <div class="governance-image"><img src="Images/Christene King new.jpg" alt="R. Christene King"></div>
+          <div class="governance-card-content">
+            <div class="governance-name">R. Christene King</div>
+            <div class="governance-title">Council Member</div>
+            <div class="governance-company">Individual</div>
+          </div>
+        </div>
+
+        <!-- 13. David Knight (Dr.) -->
+        <div class="governance-card">
+          <div class="governance-image"><img src="Images/david knight 2.jpg" alt="Dr. David Knight"></div>
+          <div class="governance-card-content">
+            <div class="governance-name">Dr. David Knight</div>
+            <div class="governance-title">Council Member</div>
+            <div class="governance-company">Jamaica Information Service<br>Director — HRM &amp; Development</div>
+          </div>
+        </div>
+
+        <!-- 14. Bernita Locke -->
+        <div class="governance-card">
+          <div class="governance-image"><img src="Images/Bernita Locke.jpg" alt="Bernita Locke"></div>
+          <div class="governance-card-content">
+            <div class="governance-name">Bernita Locke</div>
+            <div class="governance-title">Council Member</div>
+            <div class="governance-company">Individual</div>
+          </div>
+        </div>
+
+        <!-- 15. Marilyn McDonald-Watson -->
+        <div class="governance-card">
+          <div class="governance-image"><img src="Images/Marilyn McDonald-Watson.jpg" alt="Marilyn McDonald-Watson"></div>
+          <div class="governance-card-content">
+            <div class="governance-name">Marilyn McDonald-Watson</div>
+            <div class="governance-title">Council Member</div>
+            <div class="governance-company">Jamaica Public Service<br>Manager - Community Renewal</div>
+          </div>
+        </div>
+
+        <!-- 16. Clifton Reader -->
+        <div class="governance-card">
+          <div class="governance-image"><img src="Images/CliftonReader.jpg" alt="Clifton Reader"></div>
+          <div class="governance-card-content">
+            <div class="governance-name">Clifton Reader</div>
+            <div class="governance-title">Council Member</div>
+            <div class="governance-company">Individual</div>
+          </div>
+        </div>
+
+        <!-- 17. Gregory Reid -->
+        <div class="governance-card">
+          <div class="governance-image"><img src="Images/Gregory Reid.jpg" alt="Gregory Reid"></div>
+          <div class="governance-card-content">
+            <div class="governance-name">Gregory Reid</div>
+            <div class="governance-title">Council Member</div>
+            <div class="governance-company">Gregory Reid Labour Professional<br>Attorney-at-Law</div>
+          </div>
+        </div>
+
+        <!-- 18. Kerri-Ann Scott-Bernard -->
+        <div class="governance-card">
+          <div class="governance-image"><img src="Images/Keri Ann scott.jpg" alt="Kerri-Ann Scott-Bernard"></div>
+          <div class="governance-card-content">
+            <div class="governance-name">Kerri-Ann Scott-Bernard</div>
+            <div class="governance-title">Council Member</div>
+            <div class="governance-company">Stronghold Information Management<br>General Manager</div>
+          </div>
+        </div>
+
+        <!-- 19. Cheraulae Stewart -->
+        <div class="governance-card">
+          <div class="governance-image"><img src="Images/Cheraulae Stewart.jpg" alt="Cheraulae Stewart"></div>
+          <div class="governance-card-content">
+            <div class="governance-name">Cheraulae Stewart</div>
+            <div class="governance-title">Council Member</div>
+            <div class="governance-company">Securipro Limited<br>HR Manager</div>
+          </div>
+        </div>
+
+        <!-- 20. Omar Sweeney -->
+        <div class="governance-card">
+          <div class="governance-image"><img src="Images/Omar Sweeny.jpg" alt="Omar Sweeney"></div>
+          <div class="governance-card-content">
+            <div class="governance-name">Omar Sweeney</div>
+            <div class="governance-title">Council Member</div>
+            <div class="governance-company">Jamaica Social Investment Fund<br>Managing Director</div>
+          </div>
+        </div>
+
+        <!-- 21. Dennis Townsend -->
+        <div class="governance-card">
+          <div class="governance-image"><img src="Images/Dennis Townsend.jpg" alt="Dennis Townsend"></div>
+          <div class="governance-card-content">
+            <div class="governance-name">Dennis Townsend</div>
+            <div class="governance-title">Council Member</div>
+            <div class="governance-company">Individual</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="footer-top" style="grid-template-columns: 1.6fr 1fr;">
+      <div>
+        <div class="footer-logo"><img src="Images/Jef Logo.jpg" alt="Jamaica Employers' Federation" class="footer-logo-img"></div>
+        <p class="footer-about">Established in 1958, JEF is the sole employers' representative to the ILO in Jamaica and the only organisation of its kind in the region, representing 300+ corporate and individual members.</p>
+        <div class="footer-contact">
+          2A Ruthven Road, Kingston 10, Jamaica<br>
+          (876) 926-6762 / 5524 / 6908
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <a href="index.html">Home</a>
+        <a href="about.html">About JEF</a>
+        <a href="executive-council.html">Executive Council</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Jamaica Employers' Federation. All rights reserved.</span>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const drawer = document.getElementById('mobileDrawer');
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('open');
+      drawer.classList.toggle('open');
+    });
+    drawer.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        toggle.classList.remove('open');
+        drawer.classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>
