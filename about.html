@@ -219,17 +219,34 @@
     }
 
     /* ==================== PAGE HERO ==================== */
-    .page-hero {
-      background:url('Images/jefhero.webp') center center / cover no-repeat;
-      color: var(--white);
-      min-height: 450px;
-      padding: var(--spacing-2xl) var(--spacing-lg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+  .page-hero {
+    background: url('Images/jefhero.webp') center center / cover no-repeat;
+    color: var(--white);
+
+    height: 60vh;        /* responsive height */
+    max-height: 600px;   /* desktop cap */
+
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+    @media (max-width: 768px) {
+      .page-hero {
+        height: 40vh;
+        max-height: 400px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-hero {
+        height: 30vh;
+        max-height: 300px;
+      }
     }
 
     .page-hero h1,
