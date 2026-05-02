@@ -410,6 +410,14 @@
     .util-bar { padding: 8px 20px; }
     .util-bar > span { display: none; }
     nav { padding: 0 20px; }
+    .logo { gap: 10px; }
+    .logo-img { height: 44px; }
+    .logo-text { justify-content: flex-start; }
+    .logo-text p {
+      font-size: 20px;
+      letter-spacing: 0.06em;
+      max-width: calc(100vw - 130px);
+    }
     .hero { grid-template-columns: 1fr; min-height: auto; }
     .hero-content { padding: 48px 24px 36px; }
     .hero h2 { font-size: 38px; }
@@ -444,8 +452,17 @@
     .util-bar { display: none; }
     nav { height: 60px; padding: 0 12px; }
     .mobile-drawer { top: 60px; }
-    .logo-img { height: 40px; }
-    .logo-text p { font-size: 14px; letter-spacing: 0.03em; }
+    .logo { gap: 8px; }
+    .logo-img { height: 34px; }
+    .logo-text { justify-content: flex-start; }
+    .logo-text p {
+      font-size: 12px;
+      letter-spacing: 0.02em;
+      white-space: normal;
+      line-height: 1.1;
+      overflow-wrap: anywhere;
+      max-width: calc(100vw - 100px);
+    }
     .logo-badge { width: 36px; height: 36px; }
     .logo-badge span:first-child { font-size: 12px; }
     .logo-text h1 { font-size: 13px; }
