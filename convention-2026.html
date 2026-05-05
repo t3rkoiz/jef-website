@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convention 2026 — Jamaica Employers' Federation</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black:    #000000;
+    --black2:   #111111;
+    --black3:   #1A1A1A;
+    --gold:     #FED100;
+    --gold-dk:  #D4AE00;
+    --green:    #009B3A;
+    --green-dk: #007A2D;
+    --green-lt: #E8F7EE;
+    --white:    #FFFFFF;
+    --offwhite: #F9F9F9;
+    --gray:     #555555;
+    --gray-lt:  #F2F2F2;
+    --border:   #E0E0E0;
+    --orange:   #F36A2A;
+    --font-serif: 'EB Garamond', Georgia, serif;
+    --font-sans:  'DM Sans', sans-serif;
+  }
+
+  body { font-family: var(--font-sans); color: var(--black3); background: var(--white); font-size: 16px; line-height: 1.6; }
+
+  /* ── UTILITY BAR ── */
+  .util-bar { background: var(--black); padding: 8px 48px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.55); border-bottom: 1px solid rgba(254,209,0,0.15); }
+  .util-bar a { color: rgba(255,255,255,0.55); text-decoration: none; margin-left: 20px; transition: color 0.15s; }
+  .util-bar a:hover { color: var(--gold); }
+  .util-links { display: flex; }
+
+  /* ── NAVBAR ── */
+  nav { background: var(--white); border-bottom: 2px solid var(--gold); padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 72px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
+  .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; flex: 1; min-width: 0; }
+  .logo-img { height: 52px; width: auto; display: block; object-fit: contain; }
+  .logo-text { flex: 1; min-width: 0; display: flex; align-items: center; justify-content: center; }
+  .logo-text p  { font-family: Helvetica, Arial, sans-serif; font-size: 36px; color: var(--black3); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; margin: 0; }
+
+  .nav-links { display: flex; align-items: center; gap: 4px; }
+  .nav-links a { font-size: 13.5px; font-weight: 400; color: var(--black3); text-decoration: none; padding: 8px 14px; border-radius: 4px; transition: background 0.15s, color 0.15s; white-space: nowrap; }
+  .nav-links a:hover { background: var(--gray-lt); color: var(--black); }
+  .nav-links a.active { color: var(--black); font-weight: 500; }
+
+  .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
+  .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--black); border-radius: 2px; transition: transform 0.25s, opacity 0.25s; }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-drawer { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--white); border-top: 2px solid var(--gold); box-shadow: 0 8px 24px rgba(0,0,0,0.1); z-index: 99; padding: 8px 0 24px; flex-direction: column; max-height: calc(100vh - 72px); overflow-y: auto; }
+  .mobile-drawer.open { display: flex; }
+  .mobile-drawer a { font-size: 15px; color: var(--black3); text-decoration: none; padding: 13px 24px; border-bottom: 1px solid var(--border); font-weight: 400; }
+  .mobile-drawer a:last-of-type { border-bottom: none; }
+
+  /* ── HERO ── */
+  .conv26-hero {
+    background: var(--black);
+    padding: 72px 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .conv26-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(135deg, rgba(243,106,42,0.10) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 50%, rgba(254,209,0,0.10) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .conv26-hero-inner { position: relative; z-index: 1; max-width: 900px; }
+  .conv26-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(243,106,42,0.14);
+    border: 1px solid rgba(243,106,42,0.45);
+    color: var(--orange);
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 2px; margin-bottom: 22px;
+  }
+  .conv26-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--orange); border-radius: 50%; }
+  .conv26-hero h1 {
+    font-family: var(--font-serif);
+    font-size: 56px; font-weight: 400;
+    color: var(--white); line-height: 1.1;
+    margin-bottom: 14px;
+  }
+  .conv26-hero h1 em { color: var(--gold); font-style: italic; }
+  .conv26-theme {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--gold);
+    line-height: 1.4;
+    margin-bottom: 22px;
+    max-width: 760px;
+  }
+  .conv26-hero p {
+    font-size: 16px; color: rgba(255,255,255,0.75);
+    max-width: 680px; line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── KEY FACTS ── */
+  .conv26-facts {
+    background: var(--black);
+    padding: 0 48px 64px;
+    position: relative;
+  }
+  .conv26-facts-grid {
+    max-width: 1280px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    position: relative; z-index: 1;
+  }
+  .conv26-fact {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(254,209,0,0.18);
+    border-radius: 6px;
+    padding: 22px 24px;
+  }
+  .conv26-fact-label {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px;
+  }
+  .conv26-fact-value {
+    font-family: var(--font-serif);
+    font-size: 22px; font-weight: 500;
+    color: var(--white); line-height: 1.3;
+  }
+
+  /* ── BILLBOARD / FLYER ── */
+  .conv26-billboard {
+    background: var(--offwhite);
+    padding: 72px 48px;
+  }
+  .conv26-billboard-inner {
+    max-width: 1100px; margin: 0 auto;
+    text-align: center;
+  }
+  .conv26-billboard-label {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--green); margin-bottom: 8px;
+  }
+  .conv26-billboard h2 {
+    font-family: var(--font-serif);
+    font-size: 32px; font-weight: 400;
+    color: var(--black); margin-bottom: 28px;
+  }
+  .conv26-billboard-img {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+    border: 1px solid var(--border);
+  }
+  .conv26-billboard-img img { width: 100%; height: auto; display: block; }
+
+  /* ── ABOUT THE THEME ── */
+  .conv26-theme-section {
+    background: var(--white);
+    padding: 80px 48px;
+  }
+  .conv26-theme-inner {
+    max-width: 880px; margin: 0 auto;
+  }
+  .conv26-theme-section .section-label {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--green); margin-bottom: 8px;
+  }
+  .conv26-theme-section h2 {
+    font-family: var(--font-serif);
+    font-size: 36px; font-weight: 400;
+    color: var(--black); line-height: 1.25;
+    margin-bottom: 24px;
+  }
+  .conv26-theme-section p {
+    font-size: 16px; color: var(--gray);
+    line-height: 1.8; margin-bottom: 18px;
+    font-weight: 300;
+  }
+
+  /* ── CTA / SAVE THE DATE ── */
+  .conv26-cta {
+    background: var(--gold);
+    padding: 56px 48px;
+    text-align: center;
+  }
+  .conv26-cta-inner {
+    max-width: 760px; margin: 0 auto;
+  }
+  .conv26-cta-label {
+    font-size: 11px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: rgba(0,0,0,0.55);
+    font-weight: 500; margin-bottom: 8px;
+  }
+  .conv26-cta h2 {
+    font-family: var(--font-serif);
+    font-size: 32px; font-weight: 500;
+    color: var(--black); line-height: 1.25;
+    margin-bottom: 12px;
+  }
+  .conv26-cta p {
+    font-size: 15px; color: rgba(0,0,0,0.7);
+    line-height: 1.7; margin-bottom: 24px; font-weight: 300;
+  }
+  .conv26-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-black {
+    background: var(--black); color: var(--white);
+    padding: 13px 32px; font-size: 14px; font-weight: 500;
+    border-radius: 3px; text-decoration: none; white-space: nowrap;
+    display: inline-block; transition: background 0.15s;
+    font-family: var(--font-sans);
+  }
+  .btn-black:hover { background: #222; }
+  .btn-outline-black {
+    background: transparent; color: var(--black);
+    padding: 13px 28px; font-size: 14px; font-weight: 500;
+    border-radius: 3px; text-decoration: none; white-space: nowrap;
+    display: inline-block;
+    border: 1px solid rgba(0,0,0,0.4);
+    transition: border-color 0.15s, color 0.15s;
+    font-family: var(--font-sans);
+  }
+  .btn-outline-black:hover { border-color: var(--black); color: var(--black); }
+
+  /* ── PAST CONVENTIONS LINK ── */
+  .conv26-past {
+    background: var(--white);
+    padding: 56px 48px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+  }
+  .conv26-past-label {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gray); margin-bottom: 8px;
+  }
+  .conv26-past h3 {
+    font-family: var(--font-serif);
+    font-size: 22px; font-weight: 400;
+    color: var(--black); margin-bottom: 16px;
+  }
+  .conv26-past a {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 14px; color: var(--green-dk); font-weight: 500;
+    text-decoration: none; padding: 8px 0;
+    border-bottom: 1px solid var(--green-dk);
+  }
+  .conv26-past a:hover { color: var(--black); border-bottom-color: var(--black); }
+
+  /* ── FOOTER ── */
+  footer { background: #0A0A0A; color: rgba(255,255,255,0.45); padding: 60px 48px 32px; }
+  .footer-top { display: grid; grid-template-columns: 1.6fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-logo { margin-bottom: 16px; }
+  .footer-logo-img { height: 64px; width: auto; display: block; object-fit: contain; }
+  .footer-about { font-size: 13px; line-height: 1.7; font-weight: 300; max-width: 280px; }
+  .footer-contact { margin-top: 20px; font-size: 12px; line-height: 1.8; }
+  .footer-col h5 { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 16px; }
+  .footer-col a { display: block; color: rgba(255,255,255,0.5); font-size: 13px; text-decoration: none; margin-bottom: 8px; transition: color 0.15s; font-weight: 300; }
+  .footer-col a:hover { color: var(--green); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
+  .footer-bottom a { color: rgba(255,255,255,0.3); text-decoration: none; margin-left: 16px; }
+  .footer-bottom a:hover { color: var(--gold); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1280px) {
+    .logo-text p { font-size: 22px; letter-spacing: 0.05em; }
+    nav { padding: 0 32px; }
+    .nav-links a { font-size: 13px; padding: 8px 10px; }
+  }
+  @media (max-width: 1100px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+  }
+  @media (max-width: 900px) {
+    .util-bar { padding: 8px 20px; }
+    .util-bar > span { display: none; }
+    nav { padding: 0 20px; }
+
+    .conv26-hero { padding: 56px 24px 32px; }
+    .conv26-hero h1 { font-size: 38px; }
+    .conv26-theme { font-size: 18px; }
+    .conv26-facts { padding: 0 24px 48px; }
+    .conv26-facts-grid { grid-template-columns: 1fr; gap: 12px; }
+    .conv26-billboard { padding: 56px 24px; }
+    .conv26-billboard h2 { font-size: 26px; }
+    .conv26-theme-section { padding: 56px 24px; }
+    .conv26-theme-section h2 { font-size: 28px; }
+    .conv26-cta { padding: 44px 24px; }
+    .conv26-cta h2 { font-size: 26px; }
+    .conv26-past { padding: 44px 24px; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+    footer { padding: 48px 24px 24px; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  }
+  @media (max-width: 560px) {
+    .util-bar { display: none; }
+    nav { height: 60px; padding: 0 12px; }
+    .mobile-drawer { top: 60px; }
+    .logo-img { height: 40px; }
+    .logo-text p { font-size: 14px; letter-spacing: 0.03em; }
+
+    .conv26-hero { padding: 40px 16px 24px; }
+    .conv26-hero h1 { font-size: 30px; }
+    .conv26-theme { font-size: 16px; }
+    .conv26-facts { padding: 0 16px 36px; }
+    .conv26-billboard { padding: 40px 16px; }
+    .conv26-theme-section { padding: 40px 16px; }
+    .conv26-cta { padding: 36px 16px; }
+    .footer-top { grid-template-columns: 1fr; gap: 24px; }
+    footer { padding: 40px 16px 20px; }
+    .conv26-cta-btns { flex-direction: column; }
+    .conv26-cta-btns a { width: 100%; }
+  }
+
+  svg { display: block; }
+</style>
+</head>
+<body>
+
+  <!-- UTILITY BAR -->
+  <div class="util-bar">
+    <span>2A Ruthven Road, Kingston 10 &nbsp;&middot;&nbsp; (876) 926-6762</span>
+    <div class="util-links">
+      <a href="membership.html">Member Portal</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="index.html" class="logo">
+      <img src="Images/JEFLOGO2.png" alt="Jamaica Employers&#39; Federation" class="logo-img">
+      <div class="logo-text">
+        <p>JAMAICA EMPLOYERS' FEDERATION</p>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About JEF</a>
+      <a href="executive-council.html">Executive Council</a>
+      <a href="convention-2026.html" class="active">Convention 2026</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <a href="index.html">Home</a>
+    <a href="about.html">About JEF</a>
+    <a href="executive-council.html">Executive Council</a>
+    <a href="convention-2026.html">Convention 2026</a>
+  </div>
+
+  <!-- BILLBOARD / FLYER (top of page) -->
+  <section class="conv26-billboard">
+    <div class="conv26-billboard-inner">
+      <div class="conv26-billboard-img">
+        <img src="convention/240415%20JEF%20Convention%20Billboard.jpg" alt="JEF Convention 2026 — Rebuilding with Purpose: Turning Crisis to Opportunity. June 11–12, Summit Kingston." loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- HERO -->
+  <section class="conv26-hero">
+    <div class="conv26-hero-inner">
+      <div class="conv26-eyebrow">42nd Annual Business &amp; Workplace Convention</div>
+      <h1>JEF <em>Convention</em> 2026</h1>
+      <p class="conv26-theme">"Rebuilding with Purpose: Turning Crisis to Opportunity"</p>
+      <p>Jamaica's flagship gathering for employers, HR practitioners, and business leaders returns to Kingston on June 11–12, 2026. Two days of keynotes, panels, and practical sessions on resilience, transformation, and the future of work in the Caribbean.</p>
+    </div>
+  </section>
+
+  <!-- KEY FACTS -->
+  <section class="conv26-facts">
+    <div class="conv26-facts-grid">
+      <div class="conv26-fact">
+        <div class="conv26-fact-label">Dates</div>
+        <div class="conv26-fact-value">June 11–12, 2026</div>
+      </div>
+      <div class="conv26-fact">
+        <div class="conv26-fact-label">Venue</div>
+        <div class="conv26-fact-value">Summit Kingston</div>
+      </div>
+      <div class="conv26-fact">
+        <div class="conv26-fact-label">Format</div>
+        <div class="conv26-fact-value">In-Person &amp; Virtual</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT THE THEME -->
+  <section class="conv26-theme-section">
+    <div class="conv26-theme-inner">
+      <div class="section-label">About the Theme</div>
+      <h2>Rebuilding with Purpose</h2>
+      <p>The 2026 convention turns its attention to a question that has shaped Caribbean business for the past five years — how do we move beyond crisis response into sustained renewal? "Rebuilding with Purpose: Turning Crisis to Opportunity" gathers leaders from across Jamaica's business community to share what is actually working in talent retention, productivity, supply-chain resilience, digital transformation, and workplace culture.</p>
+      <p>Across two days, expect keynote addresses from senior policymakers and global thought-leaders, expert panels on industrial relations and the future of work, and practical workshops designed for HR practitioners, business owners, and decision-makers.</p>
+      <p>Full programme, speaker lineup, and registration details will be announced closer to the event. Contact the JEF Secretariat to be added to the priority notification list.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo"><img src="Images/JEFLOGO2.png" alt="Jamaica Employers' Federation" class="footer-logo-img"></div>
+        <p class="footer-about">Established in 1958, JEF is the sole employers' representative to the ILO in Jamaica and the only organisation of its kind in the region, representing 300+ corporate and individual members.</p>
+        <div class="footer-contact">
+          2A Ruthven Road, Kingston 10, Jamaica<br>
+          (876) 926-6762 / 5524 / 6908
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <a href="index.html">Home</a>
+        <a href="about.html">About JEF</a>
+        <a href="executive-council.html">Executive Council</a>
+        <a href="convention-2026.html">Convention 2026</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Jamaica Employers' Federation. All rights reserved.</span>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const drawer = document.getElementById('mobileDrawer');
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('open');
+      drawer.classList.toggle('open');
+    });
+    drawer.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        toggle.classList.remove('open');
+        drawer.classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>
